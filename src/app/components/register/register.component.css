@@ -1,0 +1,11 @@
+.box {
+  margin-top: 40px;
+}
+
+.example-form {
+  padding: 40px 100px 50px;
+}
+
+.mat-card-content {
+  flex-direction: column;
+}
