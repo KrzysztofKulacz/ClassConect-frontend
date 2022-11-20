@@ -1,17 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {RegisterRequest} from "./register-request";
+import {Role} from "../domain/role";
+import {RegisterService} from "./register.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  Roles: any = ['Nauczyciel', 'Uczeń'];
+  public roles = Object.values(Role);
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private registerService: RegisterService) {
   }
 
+  public onRegister(registerRequest: RegisterRequest): void {
+
+    this.registerService.register(registerRequest).subscribe({
+      next: () => {
+        console.log("Next has been completed")
+      },
+      error: err => console.error(err),
+      complete: () => console.log("Everything has been completed")
+    });
+
+  }
 }

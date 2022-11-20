@@ -20,6 +20,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {RouterModule} from "@angular/router";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {RouterModule} from "@angular/router";
     MatSelectModule,
     MatOptionModule,
     RouterModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
