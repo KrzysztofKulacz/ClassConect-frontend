@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {RegisterRequest} from "./register-request";
 import {Role} from "../domain/role";
 import {RegisterService} from "./register.service";
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +10,9 @@ import {NgForm} from "@angular/forms";
 })
 export class RegisterComponent {
 
-  public roles = Object.values(Role);
+  public rolesValues = Object.values(Role)
+  public rolesKeys = Object.keys(Role)
+
 
   constructor(private registerService: RegisterService) {
   }

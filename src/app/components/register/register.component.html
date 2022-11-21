@@ -18,7 +18,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Wybierz profil...</mat-label>
             <mat-select ngModel name="role">
-              <mat-option *ngFor="let role of roles" [value]="role">{{role}}
+              <mat-option *ngFor="let role of rolesValues" [value]="rolesKeys[rolesValues.indexOf(role)]">{{role}}
               </mat-option>
             </mat-select>
           </mat-form-field>
