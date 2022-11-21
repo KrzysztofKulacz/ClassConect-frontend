@@ -3,12 +3,28 @@
     <mat-card-header>
       <mat-card-title>Rejestracja</mat-card-title>
     </mat-card-header>
-    <form #loginForm = "ngForm" (ngSubmit)="onRegister(loginForm.value)">
-      <input type="text" name="username" ngModel placeholder="username"  required>
-      <input type="password" name="password" ngModel placeholder="password"  required>
-      <input type="text" name="email" ngModel placeholder="email"  required>
-      <input type="text" name="role" ngModel placeholder="Role"  required>
-      <button type="submit">Log in</button>
+    <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)" class="example-form">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Login" name="username" ngModel>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Hasło" name="password" ngModel>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" name="email" ngModel>
+        </mat-form-field>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Wybierz profil...</mat-label>
+            <mat-select ngModel name="role">
+              <mat-option *ngFor="let role of roles" [value]="role">{{role}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Zarejestruj</button>
     </form>
   </mat-card>
 </div>
