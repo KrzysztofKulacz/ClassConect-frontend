@@ -6,13 +6,13 @@
     <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)" class="example-form">
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Login" name="username" ngModel>
+          <input ngModel matInput placeholder="Login" name="username" type="text">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Hasło" name="password" ngModel>
+          <input ngModel matInput placeholder="Hasło" name="password" type="password">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" name="email" ngModel>
+          <input ngModel matInput placeholder="Email" name="email" type="email">
         </mat-form-field>
         <div>
           <mat-form-field class="example-full-width">
