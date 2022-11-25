@@ -6,7 +6,8 @@ export const environment = {
   production: false,
 
   backendApi: {
-    registerUrl: 'http://localhost:8080/v1/register/member'
+    registerUrl: 'http://localhost:8080/v1/register/member',
+    loginUrl: 'http://localhost:8080/v1/login'
   },
   path: {
     outer:{
@@ -15,10 +16,15 @@ export const environment = {
       register: 'register',
     },
     inner:{
+      landing:'inner',
       groups: 'groups',
       profile: 'profile'
     }
   },
+  auth: {
+    tokenKey: 'JWT-Key',
+    userKey: 'User-Key'
+  }
 
 };
 
