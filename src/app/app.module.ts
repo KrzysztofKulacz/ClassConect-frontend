@@ -8,8 +8,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {LogInComponent} from './components/log-in/log-in.component';
-import {RegisterComponent} from './components/register/register.component';
+import {RegisterComponent} from './components/outer/register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatInputModule} from "@angular/material/input";
@@ -21,12 +20,18 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {RouterModule} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MatDividerModule} from "@angular/material/divider";
+import {LogInComponent} from "./components/outer/log-in/log-in.component";
+import {OuterComponent} from "./components/outer/outer.component";
+import { InnerComponent } from './components/inner/inner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    OuterComponent,
+    InnerComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MatOptionModule,
     RouterModule,
     HttpClientModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

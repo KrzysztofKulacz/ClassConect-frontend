@@ -1,23 +1,25 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {RegisterComponent} from "./components/register/register.component";
-import {LogInComponent} from "./components/log-in/log-in.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {RegisterComponent} from "./components/outer/register/register.component";
+import {LogInComponent} from "./components/outer/log-in/log-in.component";
+import {environment} from "../environments/environment";
 
 const routes: Routes = [
+
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',
+    redirectTo: environment.path.outer.login,
   },
   {
-    path: 'login',
+    path: environment.path.outer.login,
     component: LogInComponent,
     data: {
       animation: 'fader'
     }
   },
   {
-    path: 'register',
+    path: environment.path.outer.register,
     component: RegisterComponent,
     data: {
       animation: 'fader'
@@ -30,4 +32,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

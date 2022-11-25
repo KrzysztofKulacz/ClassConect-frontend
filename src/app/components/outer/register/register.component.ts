@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {RegisterRequest} from "./register-request";
-import {Role} from "../domain/role";
+import {Role} from "../../domain/role";
 import {RegisterService} from "./register.service";
 
 @Component({

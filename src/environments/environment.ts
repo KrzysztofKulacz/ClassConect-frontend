@@ -7,7 +7,18 @@ export const environment = {
 
   backendApi: {
     registerUrl: 'http://localhost:8080/v1/register/member'
-  }
+  },
+  path: {
+    outer:{
+      landing:'outer',
+      login: 'login',
+      register: 'register',
+    },
+    inner:{
+      landing:'inner-landing'
+    }
+  },
+
 };
 
 /*

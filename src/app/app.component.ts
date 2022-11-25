@@ -12,9 +12,6 @@ import {fader} from "./components/animations/route-animations";
 })
 export class AppComponent {
   title = 'registerlogin';
+  isLoggedIn = false;
 
-
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-  }
 }
