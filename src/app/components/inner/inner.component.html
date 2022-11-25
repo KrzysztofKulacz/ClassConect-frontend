@@ -1,1 +1,45 @@
-<p>inner works!</p>
+<main>
+  <mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <mat-icon>school</mat-icon>
+    Class Connect
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <img
+        class="avatar mat-elevation-z8"
+        src="https://source.unsplash.com/c_GmwfHBDzk/200x200"/>
+      <h4 class="name">Krzysztof Kułacz</h4>
+      <p class="designation">Software Engineer</p>
+
+      <mat-divider></mat-divider>
+
+      <button mat-button class="menu-button" routerLink="groups">
+        <mat-icon>hub</mat-icon>
+        <span>Grupy</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="profile">
+        <mat-icon>person</mat-icon>
+        <span>Profil</span>
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-button class="menu-button" routerLink="/help">
+        <mat-icon>logout</mat-icon>
+        <span>Wyloguj</span>
+      </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content [@routeAnimations]="o.isActivated ? o.activatedRoute : ''">
+      <div class="content mat-elevation-z8">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</main>

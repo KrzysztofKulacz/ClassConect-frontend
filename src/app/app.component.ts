@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-import {RouterOutlet} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 import {fader} from "./components/animations/route-animations";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,20 @@ import {fader} from "./components/animations/route-animations";
     fader
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'registerlogin';
-  isLoggedIn = false;
+  isLoggedIn = true;
 
+  constructor(private router: Router) {
+  }
+
+
+  ngOnInit(): void {
+    if (this.isLoggedIn) {
+      this.router.navigateByUrl(environment.path.inner.groups)
+    }else {
+      this.router.navigateByUrl(environment.path.outer.login)
+    }
+
+  }
 }

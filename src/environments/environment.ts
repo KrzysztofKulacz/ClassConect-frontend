@@ -15,7 +15,8 @@ export const environment = {
       register: 'register',
     },
     inner:{
-      landing:'inner-landing'
+      groups: 'groups',
+      profile: 'profile'
     }
   },
 

@@ -24,6 +24,9 @@ import {MatDividerModule} from "@angular/material/divider";
 import {LogInComponent} from "./components/outer/log-in/log-in.component";
 import {OuterComponent} from "./components/outer/outer.component";
 import { InnerComponent } from './components/inner/inner.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { GroupsComponent } from './components/inner/groups/groups.component';
+import { ProfileComponent } from './components/inner/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { InnerComponent } from './components/inner/inner.component';
     LogInComponent,
     RegisterComponent,
     OuterComponent,
-    InnerComponent
+    InnerComponent,
+    GroupsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,9 @@ import { InnerComponent } from './components/inner/inner.component';
     MatOptionModule,
     RouterModule,
     HttpClientModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSidenavModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
