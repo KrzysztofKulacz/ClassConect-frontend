@@ -10,6 +10,7 @@ export const environment = {
     loginUrl: 'http://localhost:8080/v1/login'
   },
   path: {
+    root: "",
     outer:{
       landing:'outer',
       login: 'login',

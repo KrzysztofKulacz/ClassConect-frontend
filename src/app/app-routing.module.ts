@@ -5,16 +5,16 @@ import {LogInComponent} from "./components/outer/log-in/log-in.component";
 import {environment} from "../environments/environment";
 import {GroupsComponent} from "./components/inner/groups/groups.component";
 import {ProfileComponent} from "./components/inner/profile/profile.component";
-import {AppComponent} from "./app.component";
-import {OuterComponent} from "./components/outer/outer.component";
+import {InnerComponent} from "./components/inner/inner.component";
 
 const routes: Routes = [
 
-
   {
-    path: '',
-    pathMatch: 'full',
-    component:AppComponent
+    path: environment.path.root,
+    component: GroupsComponent,
+    data: {
+      animation: 'fader'
+    }
   },
 
   {
@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: environment.path.inner.landing,
     pathMatch: 'full',
-    component: OuterComponent,
+    component: InnerComponent,
     data: {
       animation: 'fader'
     },
