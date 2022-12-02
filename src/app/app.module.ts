@@ -28,6 +28,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import { GroupsComponent } from './components/inner/groups/groups.component';
 import { ProfileComponent } from './components/inner/profile/profile.component';
 import {CardComponent} from "./components/inner/groups/groupcard/card.component";
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {CardComponent} from "./components/inner/groups/groupcard/card.component"
     HttpClientModule,
     MatDividerModule,
     MatSidenavModule,
+    NotifierModule,
 
   ],
   providers: [],
