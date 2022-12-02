@@ -1,0 +1,13 @@
+<div class="rounded-xl shadow-xl">
+    <img class="rounded-t-xl  w-full h-36 object-cover" [src]="data.mainImageUrl">
+    <div class="flex flex-col p-7">
+        <div class="flex flex-row">
+            <div class=" text-xs uppercase bg-yellow-100 p-1 px-2 text-yellow-700 rounded-2xl">{{data.subject}}</div>
+        </div>
+        <h2 class="text-xl font-bold truncate mt-1">{{data.title}}</h2>
+        <p class="text-base text-gray-600 mt-1">{{data.description}}</p>
+        <div class="flex flex-row mt-5 items-center justify-start">
+            <p class="text-gray-400 text-sm">On {{data.creationDate}}</p>
+        </div>
+    </div>
+</div>

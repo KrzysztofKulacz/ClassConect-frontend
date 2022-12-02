@@ -27,6 +27,7 @@ import { InnerComponent } from './components/inner/inner.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { GroupsComponent } from './components/inner/groups/groups.component';
 import { ProfileComponent } from './components/inner/profile/profile.component';
+import {CardComponent} from "./components/inner/groups/groupcard/card.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProfileComponent } from './components/inner/profile/profile.component';
     OuterComponent,
     InnerComponent,
     GroupsComponent,
-    ProfileComponent
+    ProfileComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
