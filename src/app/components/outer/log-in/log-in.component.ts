@@ -17,7 +17,7 @@ export class LogInComponent {
               private router: Router) {
   }
 
-  onLogin(loginRequest: LoginRequest): void {
+  public onLogin(loginRequest: LoginRequest): void {
 
     this.authenticationService.login(loginRequest).subscribe({
 
@@ -31,6 +31,6 @@ export class LogInComponent {
       },
       error: err => console.error(err)
     })
-
   }
+
 }
