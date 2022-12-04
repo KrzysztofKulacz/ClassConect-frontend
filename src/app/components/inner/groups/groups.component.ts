@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Group} from "./group";
 import {Subject} from "../../domain/subject";
+import {MatDialog} from "@angular/material/dialog";
+import {AddGroupComponent} from "./add-group/add-group.component";
 
 @Component({
   selector: 'app-groups',
@@ -77,9 +79,16 @@ export class GroupsComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(AddGroupComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 
 }

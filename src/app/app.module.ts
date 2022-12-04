@@ -29,6 +29,8 @@ import { GroupsComponent } from './components/inner/groups/groups.component';
 import { ProfileComponent } from './components/inner/profile/profile.component';
 import {CardComponent} from "./components/inner/groups/groupcard/card.component";
 import { NotifierModule } from 'angular-notifier';
+import {AddGroupComponent} from "./components/inner/groups/add-group/add-group.component";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { NotifierModule } from 'angular-notifier';
     InnerComponent,
     GroupsComponent,
     ProfileComponent,
-    CardComponent
+    CardComponent,
+    AddGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,7 @@ import { NotifierModule } from 'angular-notifier';
     MatDividerModule,
     MatSidenavModule,
     NotifierModule,
-
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
