@@ -6,6 +6,7 @@ import {environment} from "../environments/environment";
 import {GroupsComponent} from "./components/inner/groups/groups.component";
 import {ProfileComponent} from "./components/inner/profile/profile.component";
 import {InnerComponent} from "./components/inner/inner.component";
+import {ViewGroupComponent} from "./components/inner/groups/view-group/view-group.component";
 
 const routes: Routes = [
 
@@ -51,6 +52,14 @@ const routes: Routes = [
     path: environment.path.inner.profile,
     pathMatch: 'full',
     component: ProfileComponent,
+    data: {
+      animation: 'fader'
+    },
+  },
+  {
+    path: environment.path.inner.viewgroup,
+    pathMatch: 'full',
+    component: ViewGroupComponent,
     data: {
       animation: 'fader'
     },

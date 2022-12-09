@@ -19,7 +19,8 @@ export const environment = {
     inner:{
       landing:'inner',
       groups: 'groups',
-      profile: 'profile'
+      profile: 'profile',
+      viewgroup: 'viewgroup'
     }
   },
   auth: {

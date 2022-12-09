@@ -1,17 +1,13 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {Subject} from "../../../domain/subject";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs";
 
 @Component({
-  selector: 'app-add-group',
-  templateUrl: './add-group.component.html',
-  styleUrls: ['./add-group.component.css']
+  selector: 'app-add-post',
+  templateUrl: './add-post.component.html',
+  styleUrls: ['./add-post.component.css']
 })
-export class AddGroupComponent implements OnInit {
-
-  public subjectValues = Object.values(Subject)
-  public subjectKeys = Object.keys(Subject)
+export class AddPostComponent implements OnInit {
 
   constructor(private _ngZone: NgZone) { }
 
@@ -22,6 +18,7 @@ export class AddGroupComponent implements OnInit {
     this._ngZone.onStable.pipe(take(1))
       .subscribe(() => this.autosize.resizeToFitContent(true));
   }
+
   ngOnInit(): void {
   }
 

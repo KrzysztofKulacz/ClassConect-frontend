@@ -3,6 +3,8 @@ import {Group} from "./group";
 import {Subject} from "../../domain/subject";
 import {MatDialog} from "@angular/material/dialog";
 import {AddGroupComponent} from "./add-group/add-group.component";
+import {Router} from "@angular/router";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-groups',
@@ -11,7 +13,7 @@ import {AddGroupComponent} from "./add-group/add-group.component";
 })
 export class GroupsComponent implements OnInit {
 
-  posts: Group[] = [
+  groups: Group[] = [
     {
       mainImageUrl: 'https://source.unsplash.com/odxB5oIG_iA/400x250',
       subject: Subject.ALGORITHMS_AND_DATA_STRUCTURES,
@@ -79,7 +81,7 @@ export class GroupsComponent implements OnInit {
     },
   ];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -91,4 +93,7 @@ export class GroupsComponent implements OnInit {
     });
   }
 
+  viewGroup(group: Group) {
+    this.router.navigateByUrl(environment.path.inner.viewgroup)
+  }
 }

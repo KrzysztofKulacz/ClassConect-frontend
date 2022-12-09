@@ -31,6 +31,9 @@ import {CardComponent} from "./components/inner/groups/groupcard/card.component"
 import { NotifierModule } from 'angular-notifier';
 import {AddGroupComponent} from "./components/inner/groups/add-group/add-group.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import { ViewGroupComponent } from './components/inner/groups/view-group/view-group.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {AddPostComponent} from "./components/inner/groups/view-group/add-post/add-post.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     GroupsComponent,
     ProfileComponent,
     CardComponent,
-    AddGroupComponent
+    AddGroupComponent,
+    ViewGroupComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -67,10 +72,12 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     MatDividerModule,
     MatSidenavModule,
     NotifierModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+

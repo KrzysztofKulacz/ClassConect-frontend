@@ -1,0 +1,23 @@
+<main>
+  <h3 mat-dialog-title>Dodaj nowy post</h3>
+  <mat-dialog-content class="dialog-content">
+    <form #registerForm="ngForm">
+      <mat-card-content>
+        <section>
+          <mat-form-field class="post-title">
+            <input ngModel matInput placeholder="Tytuł" name="title" type="textarea">
+          </mat-form-field>
+        </section>
+        <mat-form-field class="post-desc">
+          <textarea placeholder="Treść postu" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="15" cdkAutosizeMaxRows="45">
+          </textarea>
+        </mat-form-field>
+      </mat-card-content>
+      <div class="confirm-buttons">
+        <button mat-button mat-dialog-close>Anuluj</button>
+        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Dodaj</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+</main>

@@ -1,10 +1,11 @@
 <div class="grid md:grid-cols-2 p-8 gap-8 lg:grid-cols-3 sm:grid-cols-1 xl:grid-cols-4">
   <app-card class="transition-all ease-in-out duration-300 transform hover:scale-105 cursor-pointer"
-            *ngFor="let post of posts" [data]="post">
+            *ngFor="let group of groups" [data]="group"
+            (click)="viewGroup(group)">
   </app-card>
 </div>
 <div class="position">
   <button mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
-    <mat-icon>add</mat-icon>
+    <mat-icon>group_add</mat-icon>
   </button>
 </div>
