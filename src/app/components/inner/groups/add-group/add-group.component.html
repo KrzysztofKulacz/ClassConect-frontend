@@ -1,17 +1,19 @@
 <main>
   <h2 mat-dialog-title>Dodaj nową grupę</h2>
   <mat-dialog-content class="dialog-content">
-    <form #registerForm="ngForm">
+    <form #addGroupForm="ngForm" (ngSubmit)="onGroupAdd(addGroupForm.value)" >
       <mat-card-content>
         <section>
           <mat-form-field class="desc">
-            <input ngModel matInput placeholder="Nazwa grupy" name="title" type="textarea">
+            <input ngModel matInput placeholder="Nazwa grupy" name="groupName" type="textarea">
           </mat-form-field>
         </section>
         <mat-form-field class="desc">
           <textarea
             placeholder="Opis grupy"
             matInput
+            ngModel
+            name="description"
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"

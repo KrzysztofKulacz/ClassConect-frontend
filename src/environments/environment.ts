@@ -7,7 +7,9 @@ export const environment = {
 
   backendApi: {
     registerUrl: 'http://localhost:8080/v1/register/member',
-    loginUrl: 'http://localhost:8080/v1/login'
+    loginUrl: 'http://localhost:8080/v1/login',
+    addGroupUrl: 'http://localhost:8080/v1/team/create',
+    getAllGroups: 'http://localhost:8080/v1/team/get-all'
   },
   path: {
     root: "",

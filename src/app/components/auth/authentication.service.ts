@@ -16,7 +16,7 @@ export class AuthenticationService {
   }
 
   public login(loginRequest: LoginRequest): Observable<HttpResponse<User>> {
-    return this.httpClient.post<User>(environment.backendApi.loginUrl, loginRequest,{observe: 'response'})
+    return this.httpClient.post<User>(environment.backendApi.loginUrl, loginRequest, {observe: 'response'})
   }
 
   public isUserLogged(): boolean {
@@ -42,7 +42,7 @@ export class AuthenticationService {
     return localStorage.getItem(environment.auth.tokenKey);
   }
 
-  public getUserFromLocalCache(): User | null {
+  public getUserFromLocalCache(): User {
     return JSON.parse(<string>localStorage.getItem(environment.auth.userKey));
   }
 

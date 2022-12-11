@@ -19,21 +19,22 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {RouterModule} from "@angular/router";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatDividerModule} from "@angular/material/divider";
 import {LogInComponent} from "./components/outer/log-in/log-in.component";
 import {OuterComponent} from "./components/outer/outer.component";
-import { InnerComponent } from './components/inner/inner.component';
+import {InnerComponent} from './components/inner/inner.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { GroupsComponent } from './components/inner/groups/groups.component';
-import { ProfileComponent } from './components/inner/profile/profile.component';
+import {GroupsComponent} from './components/inner/groups/groups.component';
+import {ProfileComponent} from './components/inner/profile/profile.component';
 import {CardComponent} from "./components/inner/groups/groupcard/card.component";
-import { NotifierModule } from 'angular-notifier';
+import {NotifierModule} from 'angular-notifier';
 import {AddGroupComponent} from "./components/inner/groups/add-group/add-group.component";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import { ViewGroupComponent } from './components/inner/groups/view-group/view-group.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {ViewGroupComponent} from './components/inner/groups/view-group/view-group.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {AddPostComponent} from "./components/inner/groups/view-group/add-post/add-post.component";
+import {AuthInterceptor} from "./components/auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -75,7 +76,13 @@ import {AddPostComponent} from "./components/inner/groups/view-group/add-post/ad
     MatDialogModule,
     MatExpansionModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
