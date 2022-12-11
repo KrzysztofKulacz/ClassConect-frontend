@@ -5,7 +5,10 @@
   </app-card>
 </div>
 <div class="position">
-  <button mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
-    <mat-icon>group_add</mat-icon>
+  <button *ngIf="authorizationService.canAddGroup()" class="dialog-button" mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button class="dialog-button" mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
+    <mat-icon>search</mat-icon>
   </button>
 </div>

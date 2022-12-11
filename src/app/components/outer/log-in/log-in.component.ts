@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from "../../auth/authentication.service";
+import {AuthenticationService} from "../../authentication/authentication.service";
 import {LoginRequest} from "./login-request";
 import {User} from "../../domain/user";
 import {HttpResponse} from "@angular/common/http";

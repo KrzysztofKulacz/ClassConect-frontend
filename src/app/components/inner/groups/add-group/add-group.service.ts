@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../../domain/user";
-import {AuthenticationService} from "../../../auth/authentication.service";
+import {AuthenticationService} from "../../../authentication/authentication.service";
 import {AddGroupRequest} from "./add-group-request";
-import {Observable, Subject} from "rxjs";
+import {Observable, Subject as RxSubject} from "rxjs";
 import {environment} from "../../../../../environments/environment";
-import {Subject as RxSubject} from "rxjs";
 import {Group} from "../group";
 
 @Injectable({

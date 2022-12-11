@@ -7,6 +7,7 @@ import {GroupsComponent} from "./components/inner/groups/groups.component";
 import {ProfileComponent} from "./components/inner/profile/profile.component";
 import {InnerComponent} from "./components/inner/inner.component";
 import {ViewGroupComponent} from "./components/inner/groups/view-group/view-group.component";
+import {UserGroupsComponent} from "./components/inner/groups/user-groups/user-groups.component";
 
 const routes: Routes = [
 
@@ -44,6 +45,14 @@ const routes: Routes = [
     path: environment.path.inner.groups,
     pathMatch: 'full',
     component: GroupsComponent,
+    data: {
+      animation: 'fader'
+    },
+  },
+  {
+    path: environment.path.inner.usergroups,
+    pathMatch: 'full',
+    component: UserGroupsComponent,
     data: {
       animation: 'fader'
     },

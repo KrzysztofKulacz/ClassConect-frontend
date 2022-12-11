@@ -21,6 +21,7 @@ export const environment = {
     inner:{
       landing:'inner',
       groups: 'groups',
+      usergroups: 'usergroups',
       profile: 'profile',
       viewgroup: 'viewgroup'
     }

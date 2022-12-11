@@ -1,13 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
-import { delay, filter } from 'rxjs/operators';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import {delay, filter} from 'rxjs/operators';
+import {BreakpointObserver} from '@angular/cdk/layout';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {fader} from "../animations/route-animations";
-import {LogInComponent} from "../outer/log-in/log-in.component";
 import {environment} from "../../../environments/environment";
-import {AuthenticationService} from "../auth/authentication.service";
+import {AuthenticationService} from "../authentication/authentication.service";
 
 @UntilDestroy()
 @Component({
@@ -18,14 +17,15 @@ import {AuthenticationService} from "../auth/authentication.service";
     fader
   ]
 })
-export class InnerComponent  {
+export class InnerComponent {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
   constructor(private observer: BreakpointObserver,
               private router: Router,
-              private authenticationService: AuthenticationService) {}
+              private authenticationService: AuthenticationService) {
+  }
 
   ngAfterViewInit() {
     this.observer
@@ -58,10 +58,10 @@ export class InnerComponent  {
   }
 
 
-  public onLogout(): void{
-      this.authenticationService.logOut();
-      this.router.navigateByUrl(environment.path.root)
-        .then(() => window.location.reload())
-    }
+  public onLogout(): void {
+    this.authenticationService.logOut();
+    this.router.navigateByUrl(environment.path.root)
+      .then(() => window.location.reload())
+  }
 
 }

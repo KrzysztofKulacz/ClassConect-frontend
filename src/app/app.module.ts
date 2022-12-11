@@ -34,7 +34,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {ViewGroupComponent} from './components/inner/groups/view-group/view-group.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {AddPostComponent} from "./components/inner/groups/view-group/add-post/add-post.component";
-import {AuthInterceptor} from "./components/auth/auth.interceptor";
+import {AuthInterceptor} from "./components/authentication/auth.interceptor";
+import { UserGroupsComponent } from './components/inner/groups/user-groups/user-groups.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {AuthInterceptor} from "./components/auth/auth.interceptor";
     CardComponent,
     AddGroupComponent,
     ViewGroupComponent,
-    AddPostComponent
+    AddPostComponent,
+    UserGroupsComponent,
   ],
   imports: [
     BrowserModule,

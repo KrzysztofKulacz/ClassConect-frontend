@@ -6,9 +6,10 @@ import {Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
 import {GroupsService} from "./groups.service";
 import {User} from "../../domain/user";
-import {AuthenticationService} from "../../auth/authentication.service";
+import {AuthenticationService} from "../../authentication/authentication.service";
 import {NotifierService} from "angular-notifier";
 import {AddGroupService} from "./add-group/add-group.service";
+import {AuthorizationService} from "../../authorization/authorization.service";
 
 @Component({
   selector: 'app-groups',
@@ -33,7 +34,8 @@ export class GroupsComponent implements OnInit {
               private groupsService: GroupsService,
               private authenticationService: AuthenticationService,
               private notifier: NotifierService,
-              private addGroupService: AddGroupService) {
+              private addGroupService: AddGroupService,
+              public authorizationService: AuthorizationService) {
     this.user = this.authenticationService.getUserFromLocalCache();
     this.loadGroups();
   }

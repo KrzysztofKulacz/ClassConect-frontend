@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {fader} from "./components/animations/route-animations";
-import {AuthenticationService} from "./components/auth/authentication.service";
+import {AuthenticationService} from "./components/authentication/authentication.service";
 import {environment} from "../environments/environment";
 
 @Component({
