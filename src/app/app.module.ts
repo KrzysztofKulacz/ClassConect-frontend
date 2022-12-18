@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Pipe} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -36,6 +36,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {AddPostComponent} from "./components/inner/groups/view-group/add-post/add-post.component";
 import {AuthInterceptor} from "./components/authentication/auth.interceptor";
 import { UserGroupsComponent } from './components/inner/groups/user-groups/user-groups.component';
+import { JoinGroupComponent } from './components/inner/groups/join-group/join-group.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { UserGroupsComponent } from './components/inner/groups/user-groups/user-
     ViewGroupComponent,
     AddPostComponent,
     UserGroupsComponent,
+    JoinGroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,7 @@ import { UserGroupsComponent } from './components/inner/groups/user-groups/user-
     MatSidenavModule,
     NotifierModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [
     {

@@ -36,7 +36,7 @@ export class AddGroupComponent implements OnInit {
 
   onGroupAdd(addGroupRequest: AddGroupRequest) {
     this.addGroupService.addGroup(addGroupRequest).subscribe({
-      next: (group:Group) => {
+      next: (group: Group) => {
         this.notifier.notify('success', "Nowa grupa dodana")
         this.addGroupService.groupPusher.next(group)
       },

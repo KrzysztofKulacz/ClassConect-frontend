@@ -1,14 +1,14 @@
 <div class="grid md:grid-cols-2 p-8 gap-8 lg:grid-cols-3 sm:grid-cols-1 xl:grid-cols-4">
   <app-card class="transition-all ease-in-out duration-300 transform hover:scale-105 cursor-pointer"
-            *ngFor="let group of groups" [data]="group"
-            (click)="viewGroup(group)">
+            *ngFor="let group of groups" [group]="group"
+            [isUserGroup]="isUserGroup">
   </app-card>
 </div>
 <div class="position">
-  <button *ngIf="authorizationService.canAddGroup()" class="dialog-button" mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
-    <mat-icon>add</mat-icon>
+  <button *ngIf="authorizationService.canAddGroup()" class="dialog-button" mat-fab color="primary">
+    <mat-icon>sort</mat-icon>
   </button>
-  <button class="dialog-button" mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
+  <button class="dialog-button" mat-fab color="primary">
     <mat-icon>search</mat-icon>
   </button>
 </div>

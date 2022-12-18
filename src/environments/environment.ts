@@ -9,7 +9,11 @@ export const environment = {
     registerUrl: 'http://localhost:8080/v1/register/member',
     loginUrl: 'http://localhost:8080/v1/login',
     addGroupUrl: 'http://localhost:8080/v1/team/create',
-    getAllGroups: 'http://localhost:8080/v1/team/get-all'
+    deleteGroup: 'http://localhost:8080/v1/team/delete',
+    joinGroupUrl: 'http://localhost:8080/v1/team/join',
+    getAllUserGroups: 'http://localhost:8080/v1/team/get-member-all',
+    getAvailableGroups: 'http://localhost:8080/v1/team/get-available-all'
+
   },
   path: {
     root: "",

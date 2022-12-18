@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Group } from '../group';
+import {Component, Input, OnInit} from '@angular/core';
+import {Group} from '../group';
+import {AuthorizationService} from "../../../authorization/authorization.service";
+import {DeleteCardService} from "./delete-card.service";
+import {NotifierService} from "angular-notifier";
+import {Subject} from "../../../domain/subject";
 
 @Component({
   selector: 'app-card',
@@ -8,9 +12,37 @@ import { Group } from '../group';
 })
 export class CardComponent implements OnInit {
   @Input()
-  data!: Group;
+  group!: Group;
 
-  constructor() {}
+  @Input()
+  isUserGroup!: boolean;
 
-  ngOnInit(): void {}
+  subjectValues = Object.values(Subject);
+  keysValues = Object.keys(Subject);
+
+  constructor(private authorizationService: AuthorizationService,
+              private deleteGroupService: DeleteCardService,
+              private notifierService: NotifierService) {
+  }
+
+  ngOnInit(): void {
+  }
+
+
+  public canDisplayDelete(): boolean {
+    return this.authorizationService.canDeleteGroup(this.group.groupAdmin) && this.isUserGroup;
+  }
+
+  public deleteGroup(groupId: string) {
+    this.deleteGroupService.deleteGroup(groupId).subscribe({
+      next: ()=>{
+        this.notifierService.notify("success",`Grupa ${this.group.title} usunięta`)
+        this.deleteGroupService.groupRemover.next(this.group)
+      }
+    });
+  }
+
+  public isSecured(): boolean{
+    return Boolean(this.group.password);
+  }
 }

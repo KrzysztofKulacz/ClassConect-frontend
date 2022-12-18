@@ -12,11 +12,8 @@ export class GroupsService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getGroups(userMail: string): Observable<Group[]> {
-    return this.httpClient.get<Group[]>(environment.backendApi.getAllGroups,{
-      params:{
-        email: userMail
-      }
-    })
+  public getAllGroups(): Observable<Group[]>{
+    return this.httpClient.get<Group[]>(environment.backendApi.getAvailableGroups);
   }
+
 }

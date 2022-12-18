@@ -1,13 +1,25 @@
 <div class="rounded-xl shadow-xl">
-    <img class="rounded-t-xl  w-full h-36 object-cover" [src]="data.mainImageUrl">
-    <div class="flex flex-col p-7">
-        <div class="flex flex-row">
-            <div class=" text-xs uppercase bg-yellow-100 p-1 px-2 text-yellow-700 rounded-2xl">{{data.subject}}</div>
-        </div>
-        <h2 class="text-xl font-bold truncate mt-1">{{data.title}}</h2>
-        <p class="text-base text-gray-600 mt-1">{{data.description}}</p>
-        <div class="flex flex-row mt-5 items-center justify-start">
-            <p class="text-gray-400 text-sm">On {{data.creationDate}}</p>
-        </div>
+  <img class="rounded-t-xl  w-full h-36 object-cover" [src]="group.mainImageUrl">
+  <div class="flex flex-col p-7">
+    <div class="flex flex-row">
+      <div class=" text-xs uppercase bg-yellow-100 p-1 px-2 text-yellow-700 rounded-2xl">
+        {{subjectValues[keysValues.indexOf(group.subject)]}}</div>
     </div>
+    <h2 class="text-xl font-bold truncate mt-1">{{group.title}}</h2>
+    <p class="text-base text-gray-600 mt-1">{{group.description}}</p>
+    <div class="flex flex-row mt-5 items-center justify-start">
+      <p class="text-gray-400 text-sm">On {{group.creationDate}}</p>
+    </div>
+    <div class="buttons-card-group">
+      <button class="button-card" *ngIf="canDisplayDelete()" (click)="$event.stopPropagation()">
+        <mat-icon class="delete-icon" (click)="deleteGroup(group.groupId)">delete</mat-icon>
+      </button>
+      <button class="button-card" *ngIf="!isUserGroup">
+        <mat-icon *ngIf="!isSecured()">lock_open</mat-icon>
+        <mat-icon *ngIf="isSecured()">lock</mat-icon>
+      </button>
+    </div>
+  </div>
+
 </div>
+

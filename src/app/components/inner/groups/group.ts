@@ -5,5 +5,8 @@ export interface Group {
   subject: Subject;
   title: string;
   description: string;
-  creationDate: string;
+  creationDate: Date;
+  groupId: string;
+  groupAdmin: string;
+  password: string;
 }

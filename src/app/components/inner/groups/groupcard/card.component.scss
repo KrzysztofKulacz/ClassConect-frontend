@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.buttons-card-group {
+  display: flex;
+  justify-content: end;
+}
+
+.button-card{
+  padding: 10px
+}
+

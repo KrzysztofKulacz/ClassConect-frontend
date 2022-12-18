@@ -16,4 +16,12 @@ export class AuthorizationService {
   public canAddGroup(): boolean {
     return this.loggedUser.authorities.includes("ADD_GROUP")
   }
+
+  public canDeleteGroup(groupAdmin: string): boolean {
+
+    let isLoggedUsersGroup = this.loggedUser.userId === groupAdmin;
+    let hasDeleteAuthority = this.loggedUser.authorities.includes("DELETE_OWN_GROUPS");
+
+    return isLoggedUsersGroup && hasDeleteAuthority;
+  }
 }
