@@ -11,7 +11,6 @@ import {AuthorizationService} from "../../authorization/authorization.service";
 import {ThemePalette} from "@angular/material/core";
 import {FormControl} from '@angular/forms';
 import {Subject} from "../../domain/subject";
-import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-groups',
@@ -72,9 +71,6 @@ export class GroupsComponent implements OnInit {
 
     groupsResponse.forEach(group => {
       group.mainImageUrl = this.loadRandomPicture();
-      group.isOpen = !Boolean(group.password);
-      group.isClosed = Boolean(group.password);
-      group.isNonUser = group.groupAdmin !== this.user.userId
     })
     this.allGroups = groupsResponse;
     this.filteredGroups = groupsResponse;
@@ -121,44 +117,24 @@ export class GroupsComponent implements OnInit {
   private filterGroups() {
     let filterResult: Group[];
     if (this.allGroupsCheck) {
-      //todo remove booleand from group interface
       filterResult = this.allGroups;
     } else {
-      if (this.isAllFilterOn()){
-        filterResult = this.allGroups.filter(group => group.groupAdmin !== this.user.userId && (!Boolean(group.password) || Boolean(group.password)))
-      }
-      else if (this.openGroupsCheck && this.closedGroupsCheck){
-        filterResult = this.allGroups.filter(group => !Boolean(group.password) || Boolean(group.password))
-      }else if (this.openGroupsCheck && this.nonUsersGroupsCheck){
-        filterResult = this.allGroups.filter(group => !Boolean(group.password) && group.groupAdmin !== this.user.userId)
-      } else if (this.openGroupsCheck){
-        filterResult = this.allGroups.filter(group=> !Boolean(group.password))
-      }
-
-      else if (this.closedGroupsCheck && this.nonUsersGroupsCheck){
-        filterResult = this.allGroups.filter(group => Boolean(group.password) && group.groupAdmin !== this.user.userId)
-      }
-      else if (this.openGroupsCheck && this.closedGroupsCheck ){
-        // duplicate
-        filterResult = this.allGroups.filter(group => Boolean(group.password) || !Boolean(group.password))
-      }
-      else if (this.closedGroupsCheck){
-        filterResult = this.allGroups.filter(group => Boolean(group.password))
-      }
-
-
-
-      else if (this.nonUsersGroupsCheck && this.openGroupsCheck) {
-        filterResult = this.allGroups.filter(group => group.groupAdmin !== this.user.userId && !Boolean(group.password))
-      }
-      else if (this.closedGroupsCheck && this.nonUsersGroupsCheck) {
-        //duplicate
-        filterResult = this.allGroups.filter(group => group.groupAdmin !== this.user.userId && Boolean(group.password))
+      if (this.isAllFilterOn()) {
+        filterResult = this.applyAllFilters();
+      } else if (this.openGroupsCheck && this.closedGroupsCheck) {
+        filterResult = this.filterByOpenAndClosed();
+      } else if (this.openGroupsCheck && this.nonUsersGroupsCheck) {
+        filterResult = this.filterByOpenAndNonUsers();
+      } else if (this.openGroupsCheck) {
+        filterResult = this.filterByOpen();
+      } else if (this.closedGroupsCheck && this.nonUsersGroupsCheck) {
+        filterResult = this.filterByClosedAndNonUsers();
+      } else if (this.closedGroupsCheck) {
+        filterResult = this.filterByClosed();
       } else if (this.nonUsersGroupsCheck) {
-        filterResult = this.allGroups.filter(group => group.groupAdmin !== this.user.userId)
+        filterResult = this.filterByNonUsers()
       } else {
         filterResult = []
-
       }
 
     }
@@ -166,24 +142,31 @@ export class GroupsComponent implements OnInit {
     this.filteredGroups = filterResult;
   }
 
-  // private filterByOpenGroups(): Group[] {
-  //   if (this.openGroupsCheck) {
-  //     return this.allGroups.filter(group => !Boolean(group.password));
-  //   }
-  //   return [];
-  // }
-  //
-  // private filterByClosedGroups(): Group[] {
-  //   if (this.closedGroupsCheck) {
-  //     return this.allGroups.filter(group => Boolean(group.password));
-  //   }
-  //   return [];
-  // }
-  //
-  // private filterByNonUserGroups(): Group[] {
-  //   if (this.nonUsersGroupsCheck) {
-  //     return this.allGroups.filter(group => group.groupAdmin !== this.user.userId)
-  //   }
-  //   return [];
-  // }
+  private applyAllFilters(): Group[] {
+    return this.allGroups.filter(group => group.groupAdmin !== this.user.userId && (!Boolean(group.password) || Boolean(group.password)))
+  }
+
+  private filterByOpenAndClosed(): Group[] {
+    return this.allGroups.filter(group => !Boolean(group.password) || Boolean(group.password))
+  }
+
+  private filterByOpenAndNonUsers(): Group[] {
+    return this.allGroups.filter(group => !Boolean(group.password) && group.groupAdmin !== this.user.userId)
+  }
+
+  private filterByOpen(): Group[] {
+    return this.allGroups.filter(group => !Boolean(group.password))
+  }
+
+  private filterByClosedAndNonUsers(): Group[] {
+    return this.allGroups.filter(group => Boolean(group.password) && group.groupAdmin !== this.user.userId)
+  }
+
+  private filterByClosed(): Group[] {
+    return this.allGroups.filter(group => Boolean(group.password))
+  }
+
+  private filterByNonUsers(): Group[] {
+    return this.allGroups.filter(group => group.groupAdmin !== this.user.userId)
+  }
 }
