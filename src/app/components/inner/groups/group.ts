@@ -9,4 +9,7 @@ export interface Group {
   groupId: string;
   groupAdmin: string;
   password: string;
+  isOpen: boolean;
+  isClosed: boolean;
+  isNonUser: boolean;
 }
