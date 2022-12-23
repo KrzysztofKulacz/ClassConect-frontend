@@ -34,16 +34,6 @@ export class GroupsComponent implements OnInit {
   subjectsList = Object.values(Subject);
   subjectsKeys = Object.keys(Subject);
 
-  //todo to one service
-  randomPhotos: string [] = [
-    'https://source.unsplash.com/odxB5oIG_iA/400x250',
-    'https://source.unsplash.com/e-S-Pe2EmrE/400x250',
-    'https://source.unsplash.com/RP6Ba_6U154/400x250',
-    'https://source.unsplash.com/EAvS-4KnGrk/400x250',
-    'https://source.unsplash.com/e-S-Pe2EmrE/400x250'
-
-  ]
-
 
   constructor(private dialog: MatDialog,
               private router: Router,
@@ -81,7 +71,10 @@ export class GroupsComponent implements OnInit {
 
   private loadAllGroups() {
     this.groupsService.getAllGroups().subscribe({
-      next: (groups: Group[]) => this.buildGroups(groups),
+      next: (groups: Group[]) =>{
+        this.allGroups = groups;
+        this.filteredGroups = groups;
+      },
       error: err => {
         console.log(err)
         this.notifier.notify('error', "Wystąpił bład w trakcie ładowania grup - spróbuj później")
@@ -89,23 +82,9 @@ export class GroupsComponent implements OnInit {
     })
   }
 
-  private buildGroups(groupsResponse: Group[]) {
-
-    groupsResponse.forEach(group => {
-      group.mainImageUrl = this.loadRandomPicture();
-    })
-    this.allGroups = groupsResponse;
-    this.filteredGroups = groupsResponse;
-  }
-
-  private loadRandomPicture() {
-    return this.randomPhotos[Math.floor(Math.random() * this.randomPhotos.length)];
-  }
-
   private isAllFilterOff(): boolean {
     return !this.openGroupsCheck && !this.closedGroupsCheck && !this.nonUsersGroupsCheck && (this.chosenSubjects.value?.length == 0)
   }
-
 
   private filterGroups() {
     let filterResult: Group[];

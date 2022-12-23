@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 import {delay, filter} from 'rxjs/operators';
 import {BreakpointObserver} from '@angular/cdk/layout';
@@ -7,6 +7,8 @@ import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {fader} from "../animations/route-animations";
 import {environment} from "../../../environments/environment";
 import {AuthenticationService} from "../authentication/authentication.service";
+import {User} from "../domain/user";
+import {Role} from "../domain/role";
 
 @UntilDestroy()
 @Component({
@@ -17,14 +19,22 @@ import {AuthenticationService} from "../authentication/authentication.service";
     fader
   ]
 })
-export class InnerComponent {
+export class InnerComponent implements OnInit {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
+  user!: User
+  roleKeys = Object.keys(Role)
+  roleValues = Object.values(Role)
+
   constructor(private observer: BreakpointObserver,
               private router: Router,
               private authenticationService: AuthenticationService) {
+  }
+
+  ngOnInit(): void {
+    this.user = this.authenticationService.getUserFromLocalCache();
   }
 
   ngAfterViewInit() {
@@ -57,11 +67,11 @@ export class InnerComponent {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
-
   public onLogout(): void {
     this.authenticationService.logOut();
     this.router.navigateByUrl(environment.path.root)
       .then(() => window.location.reload())
   }
+
 
 }

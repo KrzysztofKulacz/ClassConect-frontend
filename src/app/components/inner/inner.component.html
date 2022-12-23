@@ -10,11 +10,8 @@
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-      <img
-        class="avatar mat-elevation-z8"
-        src="https://source.unsplash.com/c_GmwfHBDzk/200x200"/>
-      <h4 class="name">Krzysztof Kułacz</h4>
-      <p class="designation">Software Engineer</p>
+      <h4 class="name">{{user.username}}</h4>
+      <p class="designation">{{roleValues[roleKeys.indexOf(user.role)]}}</p>
 
       <mat-divider></mat-divider>
 
