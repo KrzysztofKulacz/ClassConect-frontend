@@ -103,10 +103,7 @@ export class UserGroupsComponent implements OnInit {
 
     this.deleteCardService.groupRemover.subscribe({
       next: (deletedGroup: Group) => {
-        this.groups = this.groups.filter(value => {
-            value.groupId === deletedGroup.groupId
-          }
-        )
+        this.groups = this.groups.filter(value => value.groupId !== deletedGroup.groupId)
       }
     })
 
