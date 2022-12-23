@@ -23,14 +23,6 @@ export class UserGroupsComponent implements OnInit {
   groups: Group[] = [];
   user: User;
   isUserGroup: boolean = true;
-  randomPhotos: string [] = [
-    'https://source.unsplash.com/odxB5oIG_iA/400x250',
-    'https://source.unsplash.com/e-S-Pe2EmrE/400x250',
-    'https://source.unsplash.com/RP6Ba_6U154/400x250',
-    'https://source.unsplash.com/EAvS-4KnGrk/400x250',
-    'https://source.unsplash.com/e-S-Pe2EmrE/400x250'
-
-  ]
 
   constructor(private dialog: MatDialog,
               private router: Router,
@@ -82,7 +74,6 @@ export class UserGroupsComponent implements OnInit {
   private buildGroups(groupsResponse: Group[]) {
 
     groupsResponse.forEach(group => {
-      group.mainImageUrl = this.loadRandomPicture();
     })
     this.groups = groupsResponse;
 
@@ -92,7 +83,6 @@ export class UserGroupsComponent implements OnInit {
 
     this.addGroupService.groupPusher.subscribe({
       next: (newGroup: Group) => {
-        newGroup.mainImageUrl = this.loadRandomPicture()
         this.groups.push(newGroup)
       }
     })
@@ -107,10 +97,6 @@ export class UserGroupsComponent implements OnInit {
       }
     })
 
-  }
-
-  private loadRandomPicture() {
-    return this.randomPhotos[Math.floor(Math.random() * this.randomPhotos.length)];
   }
 
 }

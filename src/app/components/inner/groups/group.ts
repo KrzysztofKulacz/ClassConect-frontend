@@ -9,4 +9,5 @@ export interface Group {
   groupId: string;
   groupAdmin: string;
   password: string;
+  imageUrl: string;
 }
