@@ -11,7 +11,6 @@ import {AuthorizationService} from "../../authorization/authorization.service";
 import {ThemePalette} from "@angular/material/core";
 import {FormControl} from '@angular/forms';
 import {Subject} from "../../domain/subject";
-import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-groups',
@@ -31,10 +30,9 @@ export class GroupsComponent implements OnInit {
   closedGroupsCheck: boolean = false;
   nonUsersGroupsCheck: boolean = false;
 
-  subjects = new FormControl('');
+  chosenSubjects = new FormControl('');
   subjectsList = Object.values(Subject);
   subjectsKeys = Object.keys(Subject);
-  subjectsChanges = this.subjects.valueChanges;
 
   //todo to one service
   randomPhotos: string [] = [
@@ -52,14 +50,33 @@ export class GroupsComponent implements OnInit {
               private groupsService: GroupsService,
               private authenticationService: AuthenticationService,
               private notifier: NotifierService,
-              private addGroupService: AddGroupService,
               public authorizationService: AuthorizationService) {
     this.user = this.authenticationService.getUserFromLocalCache();
   }
 
   ngOnInit(): void {
     this.loadAllGroups()
-    this.listenToSubjectChanges()
+  }
+
+  public enableAllGroups() {
+    if (this.allGroupsCheck) {
+      this.allGroupsCheck = true
+      this.openGroupsCheck = false
+      this.closedGroupsCheck = false
+      this.nonUsersGroupsCheck = false
+      this.chosenSubjects.reset()
+    }
+    this.filterGroups();
+  }
+
+  public enableFiltering() {
+    if (this.allGroupsCheck) {
+      this.allGroupsCheck = false
+    }
+    if (this.isAllFilterOff()) {
+      this.allGroupsCheck = true;
+    }
+    this.filterGroups()
   }
 
   private loadAllGroups() {
@@ -85,39 +102,10 @@ export class GroupsComponent implements OnInit {
     return this.randomPhotos[Math.floor(Math.random() * this.randomPhotos.length)];
   }
 
-
-  public enableAllGroups() {
-    if (this.allGroupsCheck) {
-      this.allGroupsCheck = true
-      this.openGroupsCheck = false
-      this.closedGroupsCheck = false
-      this.nonUsersGroupsCheck = false
-      this.subjects.reset()
-    }
-    this.filterGroups();
-  }
-
-  public disableAllGroups() {
-    this.allGroupsCheck = false
-  }
-
-  public toggleFilter() {
-    if (this.allGroupsCheck) {
-      this.allGroupsCheck = false
-    }
-    if (this.isAllFilterOff()) {
-      this.allGroupsCheck = true;
-    }
-    this.filterGroups()
-  }
-
   private isAllFilterOff(): boolean {
-    return !this.openGroupsCheck && !this.closedGroupsCheck && !this.nonUsersGroupsCheck
+    return !this.openGroupsCheck && !this.closedGroupsCheck && !this.nonUsersGroupsCheck && (this.chosenSubjects.value?.length == 0)
   }
 
-  private isAllFilterOn(): boolean {
-    return this.openGroupsCheck && this.closedGroupsCheck && this.nonUsersGroupsCheck
-  }
 
   private filterGroups() {
     let filterResult: Group[];
@@ -139,11 +127,15 @@ export class GroupsComponent implements OnInit {
       } else if (this.nonUsersGroupsCheck) {
         filterResult = this.filterByNonUsers()
       } else {
-        filterResult = []
+        filterResult = this.allGroups
       }
     }
 
-    this.filteredGroups = filterResult;
+    this.filteredGroups = this.filterByChosenSubjects(filterResult);
+  }
+
+  private isAllFilterOn(): boolean {
+    return this.openGroupsCheck && this.closedGroupsCheck && this.nonUsersGroupsCheck
   }
 
   private applyAllFilters(): Group[] {
@@ -174,14 +166,15 @@ export class GroupsComponent implements OnInit {
     return this.allGroups.filter(group => group.groupAdmin !== this.user.userId)
   }
 
-  private listenToSubjectChanges() {
-    this.subjectsChanges.subscribe({
-      next: (next) => {
-        let selectedSubjects: string[] = next as unknown as string[]
-        this.filteredGroups = this.allGroups.filter(group =>{
-          return selectedSubjects.indexOf(this.subjectsList[this.subjectsKeys.indexOf(group.subject)])> -1
-        })
-      }
-    })
+  private filterByChosenSubjects(filteredByToggle: Group[]): Group[] {
+    let selectedSubjects: string[] = this.chosenSubjects.value as unknown as string[]
+    let filteredBySubjects: Group[]
+
+    if (selectedSubjects.length > 0) {
+      filteredBySubjects = filteredByToggle.filter(group => selectedSubjects.indexOf(this.subjectsList[this.subjectsKeys.indexOf(group.subject)]) > -1)
+    } else {
+      filteredBySubjects = filteredByToggle
+    }
+    return filteredBySubjects;
   }
 }
