@@ -11,6 +11,7 @@ import {AuthorizationService} from "../../authorization/authorization.service";
 import {ThemePalette} from "@angular/material/core";
 import {FormControl} from '@angular/forms';
 import {Subject} from "../../domain/subject";
+import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-groups',
@@ -31,7 +32,9 @@ export class GroupsComponent implements OnInit {
   nonUsersGroupsCheck: boolean = false;
 
   subjects = new FormControl('');
-  subjectsList = Object.values(Subject)
+  subjectsList = Object.values(Subject);
+  subjectsKeys = Object.keys(Subject);
+  subjectsChanges = this.subjects.valueChanges;
 
   //todo to one service
   randomPhotos: string [] = [
@@ -42,6 +45,7 @@ export class GroupsComponent implements OnInit {
     'https://source.unsplash.com/e-S-Pe2EmrE/400x250'
 
   ]
+
 
   constructor(private dialog: MatDialog,
               private router: Router,
@@ -55,6 +59,7 @@ export class GroupsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllGroups()
+    this.listenToSubjectChanges()
   }
 
   private loadAllGroups() {
@@ -136,7 +141,6 @@ export class GroupsComponent implements OnInit {
       } else {
         filterResult = []
       }
-
     }
 
     this.filteredGroups = filterResult;
@@ -168,5 +172,16 @@ export class GroupsComponent implements OnInit {
 
   private filterByNonUsers(): Group[] {
     return this.allGroups.filter(group => group.groupAdmin !== this.user.userId)
+  }
+
+  private listenToSubjectChanges() {
+    this.subjectsChanges.subscribe({
+      next: (next) => {
+        let selectedSubjects: string[] = next as unknown as string[]
+        this.filteredGroups = this.allGroups.filter(group =>{
+          return selectedSubjects.indexOf(this.subjectsList[this.subjectsKeys.indexOf(group.subject)])> -1
+        })
+      }
+    })
   }
 }
