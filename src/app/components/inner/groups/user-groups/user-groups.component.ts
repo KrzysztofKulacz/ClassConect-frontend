@@ -12,6 +12,7 @@ import {JoinGroupComponent} from "../join-group/join-group.component";
 import {environment} from "../../../../../environments/environment";
 import {UserGroupsService} from "./user-groups.service";
 import {DeleteCardService} from "../groupcard/delete-card.service";
+import {ViewGroupService} from "../view-group/view-group.service";
 
 @Component({
   selector: 'app-user-groups',
@@ -31,7 +32,8 @@ export class UserGroupsComponent implements OnInit {
               private notifier: NotifierService,
               private addGroupService: AddGroupService,
               private deleteCardService: DeleteCardService,
-              public authorizationService: AuthorizationService) {
+              private viewGroupService: ViewGroupService,
+              public authorizationService: AuthorizationService,) {
     this.user = this.authenticationService.getUserFromLocalCache();
     this.loadGroups();
   }
@@ -56,7 +58,8 @@ export class UserGroupsComponent implements OnInit {
   }
 
   viewGroup(group: Group) {
-    this.router.navigateByUrl(environment.path.inner.viewgroup)
+    this.viewGroupService.setSelectedGroup(group);
+    this.router.navigateByUrl(environment.path.inner.viewgroup);
   }
 
   private loadGroups() {

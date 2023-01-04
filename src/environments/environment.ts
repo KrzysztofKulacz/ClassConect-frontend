@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
 
+  inner:{
+    selectedGroup: "selectedGroup"
+  },
+
   backendApi: {
     registerUrl: 'http://localhost:8080/v1/register/member',
     loginUrl: 'http://localhost:8080/v1/login',

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddPostComponent} from "./add-post/add-post.component";
+import {ViewGroupService} from "./view-group.service";
+import {Group} from "../group";
 
 @Component({
   selector: 'app-view-group',
@@ -9,7 +11,11 @@ import {AddPostComponent} from "./add-post/add-post.component";
 })
 export class ViewGroupComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) {
+  public selectedGroup!: Group
+
+  constructor(private dialog: MatDialog,
+              private viewGroupService: ViewGroupService) {
+    this.selectedGroup = this.viewGroupService.getSelectedGroup()
   }
 
   ngOnInit(): void {

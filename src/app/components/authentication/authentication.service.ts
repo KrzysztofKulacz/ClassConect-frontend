@@ -5,6 +5,7 @@ import {LoginRequest} from "../outer/log-in/login-request";
 import {Observable} from "rxjs";
 import {User} from "../domain/user";
 import {environment} from "../../../environments/environment";
+import {ViewGroupService} from "../inner/groups/view-group/view-group.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import {environment} from "../../../environments/environment";
 export class AuthenticationService {
 
   constructor(private httpClient: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private viewGroupService: ViewGroupService) {
   }
 
   public login(loginRequest: LoginRequest): Observable<HttpResponse<User>> {
@@ -59,6 +61,7 @@ export class AuthenticationService {
     this.removeTokenFromLocalCache();
     this.removeUserFromLocalCache();
     this.router.navigateByUrl(environment.path.outer.login);
+    this.viewGroupService.removeSelectedGroup();
 
   }
 }
