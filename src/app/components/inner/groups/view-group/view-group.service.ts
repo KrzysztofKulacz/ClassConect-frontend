@@ -17,7 +17,7 @@ export class ViewGroupService {
   }
 
   public getSelectedGroup(): Group {
-    return JSON.parse(environment.inner.selectedGroup)
+    return JSON.parse(<string>localStorage.getItem(environment.inner.selectedGroup))
   }
 
   public removeSelectedGroup() {
