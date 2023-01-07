@@ -5,49 +5,10 @@
       <span>{{selectedGroup.description}}</span>
     </mat-card>
   </div>
-  <mat-accordion class="post">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Sortowanie bąbelkowe
-        </mat-panel-title>
-        <mat-panel-description>
-          Geralt z Rivi
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>Algorytm opiera się na zasadzie maksimum, tj. każda liczba jest mniejsza lub równa od liczby maksymalnej. Porównując kolejno liczby, można wyznaczyć największą z nich. Następnie ciąg częściowo posortowany (mający liczbę maksymalną) można skrócić o tę liczbę i ponowić szukanie maksimum, już bez elementów odrzuconych i tak długo, aż zostanie nam jeden element. Otrzymane kolejne maksima są coraz mniejsze, przez co ciąg jest uporządkowany.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <mat-accordion class="post">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Metoda elementów skończonych
-        </mat-panel-title>
-        <mat-panel-description>
-          Johny Silverhand
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>Metoda elementów skończonych (MES) jest metodę
-        rozwiązywania równań róŜniczkowych, spotykanych w fizyce i
-        technice. Powstanie tej metody jest związane z rozwiązywaniem zagadnień
-        badań kosmicznych (1950 r.). </p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <mat-accordion class="post">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Algorytm Prima
-        </mat-panel-title>
-        <mat-panel-description>
-          Babcia Karola
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p> Algorytm zachłanny wyznaczający tzw. minimalne drzewo rozpinające (MDR)[1]. Mając do dyspozycji graf nieskierowany i spójny, tzn. taki w którym krawędzie grafu nie mają ustalonego kierunku oraz dla każdych dwóch wierzchołków grafu istnieje droga pomiędzy nimi, algorytm oblicza podzbiór E′ zbioru krawędzi E, dla którego graf nadal pozostaje spójny, ale suma kosztów wszystkich krawędzi zbioru E′ jest najmniejsza możliwa.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-
+  <app-post></app-post>
+  <app-post></app-post>
+  <app-post></app-post>
+  <app-post></app-post>
 
 </main>
 <div class="position">
