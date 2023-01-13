@@ -1,6 +1,10 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs";
+import {AddPostRequest} from "./add-post-request";
+
+
+
 
 @Component({
   selector: 'app-add-post',
@@ -22,4 +26,7 @@ export class AddPostComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPostAdd(addPostRequest: AddPostRequest) {
+
+  }
 }

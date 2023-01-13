@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Group} from '../group';
 import {AuthorizationService} from "../../../authorization/authorization.service";
-import {DeleteCardService} from "./delete-card.service";
+import {DeleteGroupService} from "./delete-group.service";
 import {NotifierService} from "angular-notifier";
 import {Subject} from "../../../domain/subject";
 
@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   keysValues = Object.keys(Subject);
 
   constructor(private authorizationService: AuthorizationService,
-              private deleteGroupService: DeleteCardService,
+              private deleteGroupService: DeleteGroupService,
               private notifierService: NotifierService) {
   }
 

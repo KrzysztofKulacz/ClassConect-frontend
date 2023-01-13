@@ -8,7 +8,7 @@ import {Group} from "../group";
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteCardService {
+export class DeleteGroupService {
 
   public groupRemover = new RxSubject<Group>();
 

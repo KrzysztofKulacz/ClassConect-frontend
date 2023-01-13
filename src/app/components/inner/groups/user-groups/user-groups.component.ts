@@ -11,7 +11,7 @@ import {AddGroupComponent} from "../add-group/add-group.component";
 import {JoinGroupComponent} from "../join-group/join-group.component";
 import {environment} from "../../../../../environments/environment";
 import {UserGroupsService} from "./user-groups.service";
-import {DeleteCardService} from "../groupcard/delete-card.service";
+import {DeleteGroupService} from "../groupcard/delete-group.service";
 import {ViewGroupService} from "../view-group/view-group.service";
 
 @Component({
@@ -31,7 +31,7 @@ export class UserGroupsComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private notifier: NotifierService,
               private addGroupService: AddGroupService,
-              private deleteCardService: DeleteCardService,
+              private deleteCardService: DeleteGroupService,
               private viewGroupService: ViewGroupService,
               public authorizationService: AuthorizationService,) {
     this.user = this.authenticationService.getUserFromLocalCache();

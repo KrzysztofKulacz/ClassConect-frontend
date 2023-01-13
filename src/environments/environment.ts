@@ -16,8 +16,10 @@ export const environment = {
     deleteGroup: 'http://localhost:8080/v1/team/delete',
     joinGroupUrl: 'http://localhost:8080/v1/team/join',
     getAllUserGroups: 'http://localhost:8080/v1/team/get-member-all',
-    getAvailableGroups: 'http://localhost:8080/v1/team/get-available-all'
-
+    getAvailableGroups: 'http://localhost:8080/v1/team/get-available-all',
+    addPostUrl: "http://localhost:8080/v1/",
+    deletePostUrl: "http://localhost:8080/v1/",
+    editPost: "http://localhost:8080/v1/"
   },
   path: {
     root: "",
