@@ -1,9 +1,9 @@
 import {Component, Inject, NgZone, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Post} from "../post/post";
+import {Post} from "../post";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs";
-import {PostService} from "../post/post.service";
+import {PostService} from "../post.service";
 import {NotifierService} from "angular-notifier";
 
 @Component({

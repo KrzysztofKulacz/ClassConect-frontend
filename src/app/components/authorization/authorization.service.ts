@@ -24,4 +24,8 @@ export class AuthorizationService {
 
     return isLoggedUsersGroup && hasDeleteAuthority;
   }
+
+  public canModifyPost(postAuthorId:string, groupAdminId: string): boolean{
+    return postAuthorId === this.loggedUser.userId || groupAdminId === this.loggedUser.userId
+  }
 }

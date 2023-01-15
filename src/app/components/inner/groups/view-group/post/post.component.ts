@@ -3,7 +3,8 @@ import {Post} from "./post";
 import {PostService} from "./post.service";
 import {NotifierService} from "angular-notifier";
 import {MatDialog} from "@angular/material/dialog";
-import {EditPostComponent} from "../edit-post/edit-post.component";
+import {EditPostComponent} from "./edit-post/edit-post.component";
+import {AuthorizationService} from "../../../../authorization/authorization.service";
 
 @Component({
   selector: 'app-post',
@@ -15,12 +16,19 @@ export class PostComponent implements OnInit {
   @Input()
   post!: Post;
 
+  @Input()
+  groupAdminId!: string
+
+  isModifiable: boolean = false;
+
   constructor(private postService: PostService,
               private notifier: NotifierService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private authorizationService:AuthorizationService) {
   }
 
   ngOnInit(): void {
+    this.isModifiable = this.authorizationService.canModifyPost(this.post.postAuthorId,this.groupAdminId)
   }
 
   public onPostDelete(postId: string) {

@@ -33,12 +33,12 @@ import {AddGroupComponent} from "./components/inner/groups/add-group/add-group.c
 import {MatDialogModule} from "@angular/material/dialog";
 import {ViewGroupComponent} from './components/inner/groups/view-group/view-group.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import {AddPostComponent} from "./components/inner/groups/view-group/add-post/add-post.component";
+import {AddPostComponent} from "./components/inner/groups/view-group/post/add-post/add-post.component";
 import {AuthInterceptor} from "./components/authentication/auth.interceptor";
 import {UserGroupsComponent} from './components/inner/groups/user-groups/user-groups.component';
 import {JoinGroupComponent} from './components/inner/groups/join-group/join-group.component';
 import {PostComponent} from './components/inner/groups/view-group/post/post.component';
-import { EditPostComponent } from './components/inner/groups/view-group/edit-post/edit-post.component';
+import { EditPostComponent } from './components/inner/groups/view-group/post/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [

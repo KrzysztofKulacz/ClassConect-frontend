@@ -4,7 +4,7 @@ import {Observable, Subject as RxSubject} from "rxjs";
 import {Post} from "./post";
 import {HttpClient} from "@angular/common/http";
 import {AuthenticationService} from "../../../../authentication/authentication.service";
-import {AddPostRequest} from "../add-post/add-post-request";
+import {AddPostRequest} from "./add-post/add-post-request";
 import {environment} from "../../../../../../environments/environment";
 
 @Injectable({

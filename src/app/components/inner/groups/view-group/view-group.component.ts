@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddPostComponent} from "./add-post/add-post.component";
+import {AddPostComponent} from "./post/add-post/add-post.component";
 import {ViewGroupService} from "./view-group.service";
 import {Group} from "../group";
 import {Post} from "./post/post";

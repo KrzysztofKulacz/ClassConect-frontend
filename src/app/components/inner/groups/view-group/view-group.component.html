@@ -5,7 +5,7 @@
       <span>{{selectedGroup.description}}</span>
     </mat-card>
   </div>
-  <app-post *ngFor="let post of allPosts" [post]="post"></app-post>
+  <app-post *ngFor="let post of allPosts" [post]="post" [groupAdminId]="selectedGroup.groupAdmin"></app-post>
 
 </main>
 <div class="position">
