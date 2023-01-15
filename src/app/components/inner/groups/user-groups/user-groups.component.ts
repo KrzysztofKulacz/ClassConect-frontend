@@ -8,7 +8,7 @@ import {NotifierService} from "angular-notifier";
 import {AddGroupService} from "../add-group/add-group.service";
 import {AuthorizationService} from "../../../authorization/authorization.service";
 import {AddGroupComponent} from "../add-group/add-group.component";
-import {JoinGroupComponent} from "../join-group/join-group.component";
+import {SearchGroupComponent} from "../search-group/search-group.component";
 import {environment} from "../../../../../environments/environment";
 import {UserGroupsService} from "./user-groups.service";
 import {DeleteGroupService} from "../groupcard/delete-group.service";
@@ -51,7 +51,7 @@ export class UserGroupsComponent implements OnInit {
   }
 
   openJoinGroupDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(JoinGroupComponent, {
+    this.dialog.open(SearchGroupComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
     });

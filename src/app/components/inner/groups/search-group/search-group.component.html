@@ -1,5 +1,5 @@
 <main>
-  <h2 mat-dialog-title>Dołącz do grupy</h2>
+  <h2 mat-dialog-title>Wyszukaj grupę</h2>
   <mat-dialog-content class="dialog-content">
     <form #joinGroupForm="ngForm" (ngSubmit)="onJoinGroup(joinGroupForm.value)">
       <mat-card-content>
@@ -16,7 +16,7 @@
       </mat-card-content>
       <div class="confirm-buttons">
         <button mat-button mat-dialog-close>Anuluj</button>
-        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Dołącz</button>
+        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Szukaj</button>
       </div>
     </form>
   </mat-dialog-content>

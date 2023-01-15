@@ -11,6 +11,7 @@ import {AuthorizationService} from "../../authorization/authorization.service";
 import {ThemePalette} from "@angular/material/core";
 import {FormControl} from '@angular/forms';
 import {Subject} from "../../domain/subject";
+import {SearchGroupComponent} from "./search-group/search-group.component";
 
 @Component({
   selector: 'app-groups',
@@ -155,5 +156,12 @@ export class GroupsComponent implements OnInit {
       filteredBySubjects = filteredByToggle
     }
     return filteredBySubjects;
+  }
+
+  openJoinGroupDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(SearchGroupComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }

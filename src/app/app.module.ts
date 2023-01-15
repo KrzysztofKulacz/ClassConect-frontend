@@ -36,7 +36,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {AddPostComponent} from "./components/inner/groups/view-group/post/add-post/add-post.component";
 import {AuthInterceptor} from "./components/authentication/auth.interceptor";
 import {UserGroupsComponent} from './components/inner/groups/user-groups/user-groups.component';
-import {JoinGroupComponent} from './components/inner/groups/join-group/join-group.component';
+import {SearchGroupComponent} from './components/inner/groups/search-group/search-group.component';
 import {PostComponent} from './components/inner/groups/view-group/post/post.component';
 import { EditPostComponent } from './components/inner/groups/view-group/post/edit-post/edit-post.component';
 
@@ -54,7 +54,7 @@ import { EditPostComponent } from './components/inner/groups/view-group/post/edi
     ViewGroupComponent,
     AddPostComponent,
     UserGroupsComponent,
-    JoinGroupComponent,
+    SearchGroupComponent,
     PostComponent,
     EditPostComponent,
   ],

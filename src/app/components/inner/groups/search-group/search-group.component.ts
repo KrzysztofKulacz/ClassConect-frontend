@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {JoinGroupRequest} from "./join-group-request";
-import {JoinGroupService} from "./join-group.service";
+import {SearchGroupRequest} from "./search-group-request";
+import {SearchGroupService} from "./search-group.service";
 import {Group} from "../group";
 import {NotifierService} from "angular-notifier";
 import {AddGroupService} from "../add-group/add-group.service";
@@ -8,12 +8,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-join-group',
-  templateUrl: './join-group.component.html',
-  styleUrls: ['./join-group.component.css']
+  templateUrl: './search-group.component.html',
+  styleUrls: ['./search-group.component.css']
 })
-export class JoinGroupComponent implements OnInit {
+export class SearchGroupComponent implements OnInit {
 
-  constructor(private joinGroupService: JoinGroupService,
+  constructor(private joinGroupService: SearchGroupService,
               private notifier: NotifierService,
               private addGroupService: AddGroupService) {
   }
@@ -21,7 +21,7 @@ export class JoinGroupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onJoinGroup(joinGroupRequest: JoinGroupRequest) {
+  onJoinGroup(joinGroupRequest: SearchGroupRequest) {
     this.joinGroupService.joinGroup(joinGroupRequest).subscribe({
       next: (group: Group) => {
         this.notifier.notify('success', "Dołączenie do grupy udane")
