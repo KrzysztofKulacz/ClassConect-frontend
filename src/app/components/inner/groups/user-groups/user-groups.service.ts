@@ -19,4 +19,13 @@ export class UserGroupsService {
       }
     })
   }
+
+  isUserPresentWithinGroup(groupId: string, userId: string) {
+    return this.httpClient.get<Boolean>(environment.backendApi.isUserWithinGroup,{
+      params:{
+        groupId: groupId,
+        userId: userId
+      }
+    })
+  }
 }

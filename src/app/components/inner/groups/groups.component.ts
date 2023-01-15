@@ -12,6 +12,7 @@ import {ThemePalette} from "@angular/material/core";
 import {FormControl} from '@angular/forms';
 import {Subject} from "../../domain/subject";
 import {SearchGroupComponent} from "./search-group/search-group.component";
+import {UserGroupsService} from "./user-groups/user-groups.service";
 
 @Component({
   selector: 'app-groups',
@@ -41,7 +42,7 @@ export class GroupsComponent implements OnInit {
               private groupsService: GroupsService,
               private authenticationService: AuthenticationService,
               private notifier: NotifierService,
-              public authorizationService: AuthorizationService) {
+              private userGroupsService:UserGroupsService) {
     this.user = this.authenticationService.getUserFromLocalCache();
   }
 
@@ -163,5 +164,10 @@ export class GroupsComponent implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  enterGroup(group: Group) {
+    this.userGroupsService.isUserPresentWithinGroup(group.groupId,this.user.userId)
+      .subscribe();
   }
 }

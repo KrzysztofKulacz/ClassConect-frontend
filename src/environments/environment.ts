@@ -20,7 +20,8 @@ export const environment = {
     addPostUrl: "http://localhost:8080/v1/post/add",
     deletePostUrl: "http://localhost:8080/v1/post/delete",
     editPost: "http://localhost:8080/v1/post/edit",
-    getAllPosts: "http://localhost:8080/v1/post/get-all"
+    getAllPosts: "http://localhost:8080/v1/post/get-all",
+    isUserWithinGroup: 'http://localhost:8080/v1/member/isUserWithinGroup'
   },
   path: {
     root: "",
