@@ -5,14 +5,11 @@
       <span>{{selectedGroup.description}}</span>
     </mat-card>
   </div>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
+  <app-post *ngFor="let post of allPosts" [post]="post"></app-post>
 
 </main>
 <div class="position">
-  <button mat-fab color="primary" (click)="openDialog('0ms', '0ms')">
+  <button mat-fab color="primary" (click)="openAddPostDialog('0ms', '0ms')">
     <mat-icon>post_add</mat-icon>
   </button>
 </div>

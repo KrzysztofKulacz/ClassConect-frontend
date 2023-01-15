@@ -1,10 +1,12 @@
 import {Subject} from "../../../../domain/subject";
 
 export interface Post {
+  postId: string,
   groupId: string,
   postAuthorId: string,
-  postId: string,
+  postAuthor: string,
   title: string,
-  text: string,
+  content: string,
   creationDate: Date,
 }
+

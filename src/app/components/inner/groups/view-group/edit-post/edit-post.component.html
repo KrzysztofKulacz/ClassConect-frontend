@@ -1,7 +1,7 @@
 <main>
-  <h3 mat-dialog-title>Dodaj nowy post</h3>
+  <h3 mat-dialog-title>Edytuj post: {{editPost.title}}</h3>
   <mat-dialog-content class="dialog-content">
-    <form #addPost="ngForm" (ngSubmit)="onPostAdd(addPost.value)" >
+    <form #postEdit="ngForm" (ngSubmit)="onPostEdit(postEdit.value)" >
       <mat-card-content>
         <section>
           <mat-form-field class="post-title">
@@ -15,7 +15,7 @@
       </mat-card-content>
       <div class="confirm-buttons">
         <button mat-button mat-dialog-close>Anuluj</button>
-        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Dodaj</button>
+        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Edytuj</button>
       </div>
     </form>
   </mat-dialog-content>

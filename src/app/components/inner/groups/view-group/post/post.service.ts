@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from "../../../../domain/user";
 import {Observable, Subject as RxSubject} from "rxjs";
 import {Post} from "./post";
@@ -14,26 +14,36 @@ export class PostService {
 
   private loggedUser: User;
   public postPusher = new RxSubject<Post>()
+  public postEditor = new RxSubject<Post>()
+  public postRemover = new RxSubject<String>()
 
   constructor(private httpClient: HttpClient,
               private authenticationService: AuthenticationService) {
     this.loggedUser = authenticationService.getUserFromLocalCache();
   }
 
-  public addPost(addPostRequest: AddPostRequest): Observable<Post>{
+  public addPost(addPostRequest: AddPostRequest): Observable<Post> {
     addPostRequest.userId = this.loggedUser.userId
-    return this.httpClient.post<Post>(environment.backendApi.addPostUrl,addPostRequest)
+    return this.httpClient.post<Post>(environment.backendApi.addPostUrl, addPostRequest)
   }
 
-  public deletePost(postId: string):Observable<void>{
-    return this.httpClient.delete<void>(environment.backendApi.deletePostUrl,{
-      params:{
-        postId:postId
+  public deletePost(postId: string): Observable<void> {
+    return this.httpClient.delete<void>(environment.backendApi.deletePostUrl, {
+      params: {
+        post: postId
       }
     })
   }
 
-  public editPost(post: Post): Observable<Post>{
-    return this.httpClient.put<Post>(environment.backendApi.editPost,post)
+  public editPost(post: Post): Observable<Post> {
+    return this.httpClient.put<Post>(environment.backendApi.editPost, post)
+  }
+
+  public getAllPosts(teamId: string): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(environment.backendApi.getAllPosts, {
+      params:{
+        team: teamId
+      }
+    })
   }
 }

@@ -38,6 +38,7 @@ import {AuthInterceptor} from "./components/authentication/auth.interceptor";
 import {UserGroupsComponent} from './components/inner/groups/user-groups/user-groups.component';
 import {JoinGroupComponent} from './components/inner/groups/join-group/join-group.component';
 import {PostComponent} from './components/inner/groups/view-group/post/post.component';
+import { EditPostComponent } from './components/inner/groups/view-group/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {PostComponent} from './components/inner/groups/view-group/post/post.comp
     UserGroupsComponent,
     JoinGroupComponent,
     PostComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
