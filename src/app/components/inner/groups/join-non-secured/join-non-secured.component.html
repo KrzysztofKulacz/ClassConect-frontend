@@ -1,0 +1,12 @@
+<main>
+  <h2 mat-dialog-title>Czy chcesz dołączyć do grupy {{parentComponentData.group?.title}}</h2>
+  <mat-dialog-content class="dialog-content">
+    <form #joinGroupForm="ngForm" (ngSubmit)="onJoinNonSecuredGroup(joinGroupForm.value)">
+      <div class="confirm-buttons">
+        <button mat-button mat-dialog-close>Anuluj</button>
+        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Dołącz</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+</main>

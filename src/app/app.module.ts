@@ -39,6 +39,8 @@ import {UserGroupsComponent} from './components/inner/groups/user-groups/user-gr
 import {SearchGroupComponent} from './components/inner/groups/search-group/search-group.component';
 import {PostComponent} from './components/inner/groups/view-group/post/post.component';
 import { EditPostComponent } from './components/inner/groups/view-group/post/edit-post/edit-post.component';
+import { JoinSecuredComponent } from './components/inner/groups/join-secured/join-secured.component';
+import { JoinNonSecuredComponent } from './components/inner/groups/join-non-secured/join-non-secured.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { EditPostComponent } from './components/inner/groups/view-group/post/edi
     SearchGroupComponent,
     PostComponent,
     EditPostComponent,
+    JoinSecuredComponent,
+    JoinNonSecuredComponent,
   ],
   imports: [
     BrowserModule,

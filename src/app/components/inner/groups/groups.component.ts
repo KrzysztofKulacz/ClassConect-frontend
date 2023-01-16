@@ -13,6 +13,8 @@ import {SearchGroupComponent} from "./search-group/search-group.component";
 import {UserGroupsService} from "./user-groups/user-groups.service";
 import {environment} from "../../../../environments/environment";
 import {ViewGroupService} from "./view-group/view-group.service";
+import {JoinSecuredComponent} from "./join-secured/join-secured.component";
+import {JoinNonSecuredComponent} from "./join-non-secured/join-non-secured.component";
 
 @Component({
   selector: 'app-groups',
@@ -175,8 +177,32 @@ export class GroupsComponent implements OnInit {
           if (isPresent) {
             this.viewGroupService.setSelectedGroup(group);
             this.router.navigateByUrl(environment.path.inner.viewgroup);
+          } else if (Boolean(group.password)) {
+            this.openJoinSecuredGroupDialog('0ms', '0ms',group)
+          } else {
+            this.openJoinNonSecuredGroupDialog('0ms', '0ms',group)
           }
         }
       });
+  }
+
+  private openJoinSecuredGroupDialog(enterAnimationDuration: string, exitAnimationDuration: string, group: Group) {
+    this.dialog.open(JoinSecuredComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        group: group
+      }
+    });
+  }
+
+  private openJoinNonSecuredGroupDialog(enterAnimationDuration: string, exitAnimationDuration: string, group: Group) {
+    this.dialog.open(JoinNonSecuredComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        group: group
+      }
+    });
   }
 }
