@@ -6,13 +6,13 @@ import {GroupsService} from "./groups.service";
 import {User} from "../../domain/user";
 import {AuthenticationService} from "../../authentication/authentication.service";
 import {NotifierService} from "angular-notifier";
-import {AddGroupService} from "./add-group/add-group.service";
-import {AuthorizationService} from "../../authorization/authorization.service";
 import {ThemePalette} from "@angular/material/core";
 import {FormControl} from '@angular/forms';
 import {Subject} from "../../domain/subject";
 import {SearchGroupComponent} from "./search-group/search-group.component";
 import {UserGroupsService} from "./user-groups/user-groups.service";
+import {environment} from "../../../../environments/environment";
+import {ViewGroupService} from "./view-group/view-group.service";
 
 @Component({
   selector: 'app-groups',
@@ -42,7 +42,9 @@ export class GroupsComponent implements OnInit {
               private groupsService: GroupsService,
               private authenticationService: AuthenticationService,
               private notifier: NotifierService,
-              private userGroupsService:UserGroupsService) {
+              private userGroupsService: UserGroupsService,
+              private viewGroupService: ViewGroupService,
+  ) {
     this.user = this.authenticationService.getUserFromLocalCache();
   }
 
@@ -73,7 +75,7 @@ export class GroupsComponent implements OnInit {
 
   private loadAllGroups() {
     this.groupsService.getAllGroups().subscribe({
-      next: (groups: Group[]) =>{
+      next: (groups: Group[]) => {
         this.allGroups = groups;
         this.filteredGroups = groups;
       },
@@ -167,7 +169,14 @@ export class GroupsComponent implements OnInit {
   }
 
   enterGroup(group: Group) {
-    this.userGroupsService.isUserPresentWithinGroup(group.groupId,this.user.userId)
-      .subscribe();
+    this.userGroupsService.isUserPresentWithinGroup(group.groupId, this.user.userId)
+      .subscribe({
+        next: (isPresent: Boolean) => {
+          if (isPresent) {
+            this.viewGroupService.setSelectedGroup(group);
+            this.router.navigateByUrl(environment.path.inner.viewgroup);
+          }
+        }
+      });
   }
 }

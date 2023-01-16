@@ -93,13 +93,11 @@ export class UserGroupsComponent implements OnInit {
   }
 
   private refreshAfterDelete() {
-
     this.deleteCardService.groupRemover.subscribe({
       next: (deletedGroup: Group) => {
         this.groups = this.groups.filter(value => value.groupId !== deletedGroup.groupId)
       }
     })
-
   }
 
 }

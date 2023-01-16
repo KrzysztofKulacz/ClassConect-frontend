@@ -39,8 +39,6 @@ import {UserGroupsComponent} from './components/inner/groups/user-groups/user-gr
 import {SearchGroupComponent} from './components/inner/groups/search-group/search-group.component';
 import {PostComponent} from './components/inner/groups/view-group/post/post.component';
 import { EditPostComponent } from './components/inner/groups/view-group/post/edit-post/edit-post.component';
-import { JoinOpenGroupComponent } from './components/inner/groups/join-open-group/join-open-group.component';
-import { JoinClosedGroupComponent } from './components/inner/groups/join-closed-group/join-closed-group.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +57,6 @@ import { JoinClosedGroupComponent } from './components/inner/groups/join-closed-
     SearchGroupComponent,
     PostComponent,
     EditPostComponent,
-    JoinOpenGroupComponent,
-    JoinClosedGroupComponent,
   ],
   imports: [
     BrowserModule,
