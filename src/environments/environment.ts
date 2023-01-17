@@ -21,7 +21,9 @@ export const environment = {
     deletePostUrl: "http://localhost:8080/v1/post/delete",
     editPost: "http://localhost:8080/v1/post/edit",
     getAllPosts: "http://localhost:8080/v1/post/get-all",
-    isUserWithinGroup: 'http://localhost:8080/v1/member/isUserWithinGroup'
+    isUserWithinGroup: 'http://localhost:8080/v1/member/is-user-within-group',
+    removeUserFromGroup: 'http://localhost:8080/v1/member/remove-from-group'
+
   },
   path: {
     root: "",

@@ -11,7 +11,7 @@ import {AddGroupComponent} from "../add-group/add-group.component";
 import {SearchGroupComponent} from "../search-group/search-group.component";
 import {environment} from "../../../../../environments/environment";
 import {UserGroupsService} from "./user-groups.service";
-import {DeleteGroupService} from "../groupcard/delete-group.service";
+import {CardGroupService} from "../groupcard/card-group.service";
 import {ViewGroupService} from "../view-group/view-group.service";
 
 @Component({
@@ -31,7 +31,7 @@ export class UserGroupsComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private notifier: NotifierService,
               private addGroupService: AddGroupService,
-              private deleteCardService: DeleteGroupService,
+              private deleteCardService: CardGroupService,
               private viewGroupService: ViewGroupService,
               public authorizationService: AuthorizationService,) {
     this.user = this.authenticationService.getUserFromLocalCache();
@@ -40,7 +40,7 @@ export class UserGroupsComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshGroups();
-    this.refreshAfterDelete();
+    this.refreshAfterRemove();
   }
 
   openAddGroupDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -92,10 +92,10 @@ export class UserGroupsComponent implements OnInit {
 
   }
 
-  private refreshAfterDelete() {
+  private refreshAfterRemove() {
     this.deleteCardService.groupRemover.subscribe({
-      next: (deletedGroup: Group) => {
-        this.groups = this.groups.filter(value => value.groupId !== deletedGroup.groupId)
+      next: (removedGroup: Group) => {
+        this.groups = this.groups.filter(value => value.groupId !== removedGroup.groupId)
       }
     })
   }

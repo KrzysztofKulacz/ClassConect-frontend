@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Group} from '../group';
 import {AuthorizationService} from "../../../authorization/authorization.service";
-import {DeleteGroupService} from "./delete-group.service";
+import {CardGroupService} from "./card-group.service";
 import {NotifierService} from "angular-notifier";
 import {Subject} from "../../../domain/subject";
+import {AuthenticationService} from "../../../authentication/authentication.service";
 
 @Component({
   selector: 'app-card',
@@ -21,7 +22,8 @@ export class CardComponent implements OnInit {
   keysValues = Object.keys(Subject);
 
   constructor(private authorizationService: AuthorizationService,
-              private deleteGroupService: DeleteGroupService,
+              private authenticationService: AuthenticationService,
+              private cardGroupService: CardGroupService,
               private notifierService: NotifierService) {
   }
 
@@ -34,15 +36,25 @@ export class CardComponent implements OnInit {
   }
 
   public deleteGroup(groupId: string) {
-    this.deleteGroupService.deleteGroup(groupId).subscribe({
-      next: ()=>{
-        this.notifierService.notify("success",`Grupa ${this.group.title} usunięta`)
-        this.deleteGroupService.groupRemover.next(this.group)
+    this.cardGroupService.deleteGroup(groupId).subscribe({
+      next: () => {
+        this.notifierService.notify("success", `Grupa ${this.group.title} usunięta`)
+        this.cardGroupService.groupRemover.next(this.group)
       }
     });
   }
 
-  public isSecured(): boolean{
+  public isSecured(): boolean {
     return Boolean(this.group.password);
+  }
+
+  public leaveGroup(groupId: string) {
+    let loggedUserId = this.authenticationService.getUserFromLocalCache().userId;
+    this.cardGroupService.removeUserFromGroup(groupId, loggedUserId).subscribe({
+      next: (removedGroup: Group) => {
+        this.notifierService.notify("success", `Opuszczono grupę ${this.group.title}`)
+        this.cardGroupService.groupRemover.next(removedGroup)
+      }
+    })
   }
 }
