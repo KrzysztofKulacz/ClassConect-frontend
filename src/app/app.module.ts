@@ -41,6 +41,7 @@ import {PostComponent} from './components/inner/groups/view-group/post/post.comp
 import { EditPostComponent } from './components/inner/groups/view-group/post/edit-post/edit-post.component';
 import { JoinSecuredComponent } from './components/inner/groups/join-secured/join-secured.component';
 import { JoinNonSecuredComponent } from './components/inner/groups/join-non-secured/join-non-secured.component';
+import { ConfirmationModalComponent } from './components/inner/utils/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { JoinNonSecuredComponent } from './components/inner/groups/join-non-secu
     EditPostComponent,
     JoinSecuredComponent,
     JoinNonSecuredComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     BrowserModule,

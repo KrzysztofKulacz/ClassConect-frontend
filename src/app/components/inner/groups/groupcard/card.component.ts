@@ -5,6 +5,8 @@ import {CardGroupService} from "./card-group.service";
 import {NotifierService} from "angular-notifier";
 import {Subject} from "../../../domain/subject";
 import {AuthenticationService} from "../../../authentication/authentication.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmationModalComponent} from "../../utils/confirmation-modal/confirmation-modal.component";
 
 @Component({
   selector: 'app-card',
@@ -24,7 +26,8 @@ export class CardComponent implements OnInit {
   constructor(private authorizationService: AuthorizationService,
               private authenticationService: AuthenticationService,
               private cardGroupService: CardGroupService,
-              private notifierService: NotifierService) {
+              private notifierService: NotifierService,
+              private dialog: MatDialog,) {
   }
 
   ngOnInit(): void {
@@ -36,12 +39,20 @@ export class CardComponent implements OnInit {
   }
 
   public deleteGroup(groupId: string) {
-    this.cardGroupService.deleteGroup(groupId).subscribe({
-      next: () => {
-        this.notifierService.notify("success", `Grupa ${this.group.title} usunięta`)
-        this.cardGroupService.groupRemover.next(this.group)
-      }
-    });
+    this.showConfirmationModal("Czy na pewno chcesz usunąć grupę?")
+      .afterClosed()
+      .subscribe({
+        next: (isConfirmed: boolean) => {
+          if (isConfirmed) {
+            this.cardGroupService.deleteGroup(groupId).subscribe({
+              next: () => {
+                this.notifierService.notify("success", `Grupa ${this.group.title} usunięta`)
+                this.cardGroupService.groupRemover.next(this.group)
+              }
+            });
+         }
+        }
+      })
   }
 
   public isSecured(): boolean {
@@ -49,11 +60,29 @@ export class CardComponent implements OnInit {
   }
 
   public leaveGroup(groupId: string) {
-    let loggedUserId = this.authenticationService.getUserFromLocalCache().userId;
-    this.cardGroupService.removeUserFromGroup(groupId, loggedUserId).subscribe({
-      next: (removedGroup: Group) => {
-        this.notifierService.notify("success", `Opuszczono grupę ${this.group.title}`)
-        this.cardGroupService.groupRemover.next(removedGroup)
+    this.showConfirmationModal("Czy na pewno chcesz opuścić grupę?")
+      .afterClosed()
+      .subscribe({
+      next: (isConfirmed: boolean) => {
+        if (isConfirmed) {
+          let loggedUserId = this.authenticationService.getUserFromLocalCache().userId;
+          this.cardGroupService.removeUserFromGroup(groupId, loggedUserId).subscribe({
+            next: (removedGroup: Group) => {
+              this.notifierService.notify("success", `Opuszczono grupę ${this.group.title}`)
+              this.cardGroupService.groupRemover.next(removedGroup)
+            }
+          })
+        }
+      }
+    })
+  }
+
+  private showConfirmationModal(message: string) {
+    return this.dialog.open(ConfirmationModalComponent, {
+      enterAnimationDuration: "0ms",
+      exitAnimationDuration: "0ms",
+      data: {
+        message: message
       }
     })
   }
