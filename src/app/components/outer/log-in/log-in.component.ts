@@ -5,6 +5,7 @@ import {User} from "../../domain/user";
 import {HttpResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-log-in',
@@ -14,6 +15,7 @@ import {environment} from "../../../../environments/environment";
 export class LogInComponent {
 
   constructor(private authenticationService: AuthenticationService,
+              private notifier: NotifierService,
               private router: Router) {
   }
 
@@ -27,10 +29,11 @@ export class LogInComponent {
         this.authenticationService.saveUserToLocalCache(<User>loginResponse.body);
         this.router.navigateByUrl(environment.path.root)
           .then(() => window.location.reload())
-
       },
-      error: err => console.error(err)
+      error: err => {
+        console.error(err);
+        this.notifier.notify('error', "Logowanie nieudane - sprawdź maila oraz hasło")
+      }
     })
   }
-
 }

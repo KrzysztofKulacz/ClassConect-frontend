@@ -75,11 +75,7 @@ export class UserGroupsComponent implements OnInit {
   }
 
   private buildGroups(groupsResponse: Group[]) {
-
-    groupsResponse.forEach(group => {
-    })
     this.groups = groupsResponse;
-
   }
 
   private refreshGroups() {
