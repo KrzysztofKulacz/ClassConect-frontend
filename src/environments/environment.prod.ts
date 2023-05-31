@@ -19,7 +19,7 @@ export const environment = {
     getAllPosts: "http://57.128.195.219:8080/v1/post/get-all",
     isUserWithinGroup: 'http://57.128.195.219:8080/v1/member/is-user-within-group',
     removeUserFromGroup: 'http://57.128.195.219:8080/v1/member/remove-from-group'
-
+//test
   },
   path: {
     root: "",
