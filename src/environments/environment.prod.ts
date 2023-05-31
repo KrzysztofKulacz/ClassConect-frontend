@@ -6,19 +6,19 @@ export const environment = {
   },
 
   backendApi: {
-    registerUrl: 'http://localhost:8080/v1/register/member',
-    loginUrl: 'http://localhost:8080/v1/login',
-    addGroupUrl: 'http://localhost:8080/v1/team/create',
-    deleteGroup: 'http://localhost:8080/v1/team/delete',
-    joinGroupUrl: 'http://localhost:8080/v1/team/join',
-    getAllUserGroups: 'http://localhost:8080/v1/team/get-member-all',
-    getAvailableGroups: 'http://localhost:8080/v1/team/get-available-all',
-    addPostUrl: "http://localhost:8080/v1/post/add",
-    deletePostUrl: "http://localhost:8080/v1/post/delete",
-    editPost: "http://localhost:8080/v1/post/edit",
-    getAllPosts: "http://localhost:8080/v1/post/get-all",
-    isUserWithinGroup: 'http://localhost:8080/v1/member/is-user-within-group',
-    removeUserFromGroup: 'http://localhost:8080/v1/member/remove-from-group'
+    registerUrl: 'http://57.128.195.219:8080/v1/register/member',
+    loginUrl: 'http://57.128.195.219:8080/v1/login',
+    addGroupUrl: 'http://57.128.195.219:8080/v1/team/create',
+    deleteGroup: 'http://57.128.195.219:8080/v1/team/delete',
+    joinGroupUrl: 'http://57.128.195.219:8080/v1/team/join',
+    getAllUserGroups: 'http://57.128.195.219:8080/v1/team/get-member-all',
+    getAvailableGroups: 'http://57.128.195.219:8080/v1/team/get-available-all',
+    addPostUrl: "http://57.128.195.219:8080/v1/post/add",
+    deletePostUrl: "http://57.128.195.219:8080/v1/post/delete",
+    editPost: "http://57.128.195.219:8080/v1/post/edit",
+    getAllPosts: "http://57.128.195.219:8080/v1/post/get-all",
+    isUserWithinGroup: 'http://57.128.195.219:8080/v1/member/is-user-within-group',
+    removeUserFromGroup: 'http://57.128.195.219:8080/v1/member/remove-from-group'
 
   },
   path: {
