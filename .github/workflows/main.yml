@@ -15,7 +15,7 @@ jobs:
       
       - name: Build and push Docker Image
         env:
-          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker build -t krzysztofkulacz/classconect-frontend:latest .
