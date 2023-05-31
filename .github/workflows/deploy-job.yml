@@ -33,4 +33,4 @@ jobs:
             docker-compose stop classconect-frontend
             docker-compose rm -f  classconect-frontend
             docker system prune -f -a --volumes
-           
+            docker-compose up -d
