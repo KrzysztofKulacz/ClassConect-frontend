@@ -18,6 +18,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
+          docker rmi $(docker images -q krzysztofkulacz/classconect-frontend)
           docker build -t krzysztofkulacz/classconect-frontend:latest .
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker push krzysztofkulacz/classconect-frontend:latest
