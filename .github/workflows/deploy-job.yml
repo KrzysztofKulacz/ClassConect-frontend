@@ -21,6 +21,7 @@ jobs:
           docker build -t krzysztofkulacz/classconect-frontend:latest .
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker push krzysztofkulacz/classconect-frontend:latest
+
       - name: SSH into VPS and update container
         uses: appleboy/ssh-action@v0.1.10
         with:
