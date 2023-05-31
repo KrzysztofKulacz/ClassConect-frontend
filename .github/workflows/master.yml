@@ -26,7 +26,7 @@ jobs:
           VPS_IP: ${{ secrets.VPS_IP }}
           VPS_USERNAME: ${{ secrets.VPS_USERNAME }}
           VPS_KEY: ${{ secrets.VPS_KEY }}
-        uses: appleboy/ssh-action@v0.3.0
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USERNAME }}
