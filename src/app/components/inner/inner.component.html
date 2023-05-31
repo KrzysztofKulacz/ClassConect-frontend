@@ -1,0 +1,42 @@
+<main>
+  <mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <mat-icon>school</mat-icon>
+    Class Connect
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <h4 class="name">{{user.username}}</h4>
+      <p class="designation">{{roleValues[roleKeys.indexOf(user.role)]}}</p>
+
+      <mat-divider></mat-divider>
+
+      <button mat-button class="menu-button" routerLink="groups">
+        <mat-icon>hub</mat-icon>
+        <span>Grupy</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="usergroups">
+        <mat-icon>group_work</mat-icon>
+        <span>Moje grupy</span>
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-button class="menu-button" (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Wyloguj</span>
+      </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content [@routeAnimations]="o.isActivated ? o.activatedRoute : ''">
+      <div class="content mat-elevation-z8">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</main>

@@ -1,0 +1,10 @@
+<main [@routeAnimations]="o.isActivated ? o.activatedRoute : ''">
+  <mat-toolbar color="primary" class="app-header">
+  <span class="nav-tool-items">
+    <button  mat-button routerLink="login" routerLinkActive="active">Zaloguj</button>
+    <button mat-button  routerLink="register" routerLinkActive="active">Rejestracja</button>
+  </span>
+  </mat-toolbar>
+
+  <router-outlet #o="outlet"></router-outlet>
+</main>

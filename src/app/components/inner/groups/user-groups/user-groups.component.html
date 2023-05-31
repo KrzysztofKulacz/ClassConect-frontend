@@ -1,0 +1,15 @@
+<div class="grid md:grid-cols-2 p-8 gap-8 lg:grid-cols-3 sm:grid-cols-1 xl:grid-cols-4">
+  <app-card class="transition-all ease-in-out duration-300 transform hover:scale-105 cursor-pointer "
+            *ngFor="let group of groups" [group]="group"
+            [isUserGroup]="isUserGroup"
+            (click)="viewGroup(group)">
+  </app-card>
+</div>
+<div class="position">
+  <button *ngIf="authorizationService.canAddGroup()" class="dialog-button" mat-fab color="primary" (click)="openAddGroupDialog('0ms', '0ms')">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button class="dialog-button" mat-fab color="primary" (click)="openJoinGroupDialog('0ms', '0ms')">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>

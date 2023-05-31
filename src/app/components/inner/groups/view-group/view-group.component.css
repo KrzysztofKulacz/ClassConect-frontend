@@ -1,0 +1,8 @@
+.post{
+  padding: 5rem;
+}
+.position{
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+}

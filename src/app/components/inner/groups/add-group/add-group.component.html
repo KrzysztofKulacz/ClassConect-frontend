@@ -1,0 +1,44 @@
+<main>
+  <h2 mat-dialog-title>Dodaj nową grupę</h2>
+  <mat-dialog-content class="dialog-content">
+    <form #addGroupForm="ngForm" (ngSubmit)="onGroupAdd(addGroupForm.value)" >
+      <mat-card-content>
+        <section>
+          <mat-form-field class="desc">
+            <input ngModel matInput placeholder="Nazwa grupy" name="groupName" type="text">
+          </mat-form-field>
+          <mat-form-field class="desc">
+            <input ngModel matInput placeholder="Hasło grupy" name="password" type="password">
+          </mat-form-field>
+        </section>
+        <mat-form-field class="desc">
+          <textarea
+            placeholder="Opis grupy"
+            matInput
+            ngModel
+            name="description"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="10">
+          </textarea>
+        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <mat-label>Wybierz przedmiot...</mat-label>
+            <mat-select ngModel name="subject">
+              <mat-option *ngFor="let subject of subjectValues"
+                          [value]="subjectKeys[subjectValues.indexOf(subject)]">{{subject}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <div class="confirm-buttons">
+        <button mat-button mat-dialog-close>Anuluj</button>
+        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Dodaj</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+</main>

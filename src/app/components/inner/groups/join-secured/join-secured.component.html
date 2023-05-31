@@ -1,0 +1,19 @@
+<main>
+  <h2 mat-dialog-title>Grupa {{parentComponentData.group?.title}} jest zabezpieczona. <br> Wprowadź hasło</h2>
+  <mat-dialog-content class="dialog-content">
+    <form #joinGroupForm="ngForm" (ngSubmit)="onJoinSecuredGroup(joinGroupForm.value)">
+      <mat-card-content>
+        <section>
+          <mat-form-field class="desc">
+            <input ngModel matInput placeholder="Hasło" name="password" type="password">
+          </mat-form-field>
+        </section>
+      </mat-card-content>
+      <div class="confirm-buttons">
+        <button mat-button mat-dialog-close>Anuluj</button>
+        <button mat-stroked-button color="accent" [mat-dialog-close]="true" type="submit" cdkFocusInitial>Dołącz</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+</main>

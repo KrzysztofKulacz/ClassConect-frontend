@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.position{
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+}
+
+.dialog-button{
+  margin-left: 1rem;
+}
+
+.sorting-options{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.subject-select{
+  height: 10px   !important;
+}

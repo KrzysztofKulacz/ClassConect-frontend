@@ -1,0 +1,29 @@
+<mat-accordion class="post">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{post.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{post.postAuthor}}
+      </mat-panel-description>
+      <menu *ngIf="isModifiable">
+        <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openEditPostDialog('0ms', '0ms')">
+            <mat-icon>edit_note</mat-icon>
+            <span>Edytuj</span>
+          </button>
+          <button mat-menu-item (click)="onPostDelete(post.postId)">
+            <mat-icon>delete</mat-icon>
+            <span>Usuń</span>
+          </button>
+        </mat-menu>
+      </menu>
+    </mat-expansion-panel-header>
+    <p>{{post.content}}</p>
+  </mat-expansion-panel>
+
+</mat-accordion>

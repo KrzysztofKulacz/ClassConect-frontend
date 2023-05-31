@@ -1,0 +1,60 @@
+.dialog-content {
+  padding: 50px;
+  width: 1000px;
+}
+
+.post-desc {
+  width: 100%;
+  height: 80px;
+}
+
+.post-title {
+  width: 20%;
+  margin-bottom: 2rem;
+}
+
+.confirm-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+@media screen and (max-width: 1388px) {
+  .dialog-content{
+    padding: 25px;
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 1178px) {
+  .dialog-content{
+    padding: 20px;
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 906px) {
+  .dialog-content{
+    padding: 20px;
+    width: 400px;
+  }
+}
+@media screen and (max-width: 624px) {
+  .dialog-content{
+    padding: 20px;
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .dialog-content{
+    padding: 20px;
+    width: 260px;
+  }
+  .post-title {
+    width: 50%;
+    margin-bottom: 2rem;
+  }
+}
+
