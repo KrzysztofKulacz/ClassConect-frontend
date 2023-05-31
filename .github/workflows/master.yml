@@ -13,24 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-#       - name: Build and push Docker Image
-#         env:
-#           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-#           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-#         run: |
-#           docker build -t krzysztofkulacz/classconect-frontend:latest .
-#           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-#           docker push krzysztofkulacz/classconect-frontend:latest
-      - name: SSH into VPS and update container
+      - name: Build and push Docker Image
         env:
-          VPS_IP: ${{ secrets.VPS_IP }}
-          VPS_USERNAME: ${{ secrets.VPS_USERNAME }}
-          VPS_KEY: ${{ secrets.VPS_KEY }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker build -t krzysztofkulacz/classconect-frontend:latest .
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          docker push krzysztofkulacz/classconect-frontend:latest
+      - name: SSH into VPS and update container
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_KEY }}
           script: |
-            cd /home/debian/docker_data/classconnect/docker-compose/v1
-            mkdir testssh
+            docker-compose stop classconect-frontend
+            docker-compose rm -f  classconect-frontend
+            docker system prune -f -a --volumes
+            docker-compose up -d
