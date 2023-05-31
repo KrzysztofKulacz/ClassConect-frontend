@@ -2,17 +2,17 @@ name: Deploy frontend
 
 on:
   push:
-    branches: 
+    branches:
       - develop
-
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Build and push Docker Image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
